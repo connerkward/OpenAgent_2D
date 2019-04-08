@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B50631B225AF64600486708 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B50631A225AF64600486708 /* main.cpp */; };
+		1B627782225B000400B6AFF9 /* map_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B627780225B000400B6AFF9 /* map_generator.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		1B506317225AF64600486708 /* agent-simulator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "agent-simulator"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B50631A225AF64600486708 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1B627780225B000400B6AFF9 /* map_generator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = map_generator.cpp; sourceTree = "<group>"; };
+		1B627781225B000400B6AFF9 /* map_generator.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = map_generator.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				1B50631A225AF64600486708 /* main.cpp */,
+				1B627780225B000400B6AFF9 /* map_generator.cpp */,
+				1B627781225B000400B6AFF9 /* map_generator.hpp */,
 			);
 			path = "agent-simulator";
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B627782225B000400B6AFF9 /* map_generator.cpp in Sources */,
 				1B50631B225AF64600486708 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
