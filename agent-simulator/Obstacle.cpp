@@ -6,4 +6,8 @@
 //  Copyright © 2019 Conner K Ward. All rights reserved.
 //
 
-#include <stdio.h>
+///TODO Obstacle as Wall 
+
+class Obstacle{
+    
+};

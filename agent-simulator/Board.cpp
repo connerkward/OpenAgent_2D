@@ -7,18 +7,33 @@
 	the opposite side of the Board (periodic boundary conditions).
 
 */
-class Board {
+#include <string>
+#include "Board.h"
+/// TODO: Add representation
 
-	/// TODO: Add representation
+/// Should the board have a border?
+/// Which class has responsibility for enforcing PBCs?
 
-	/// TODO: Add constructor
-		/// Should the board have a border?
-		/// Which class has responsibility for enforcing PBCs?
+/// TODO: Add a board populator
 
-	/// TODO: Add a board populator
+/// TODO: Create a string representation for the Board
 
-	/// TODO: Create a string representation for the Board
-    
-    /// TODO: add function check(int boardlocation[2]) that returns a the object or the reference to the object at that location
+//Constructor
+Board::Board(int sizex, int sizey) {
+    return;
+    }
 
-};
+// Check if boardlocation is "valid" for traversal,
+// Returns true for items, false for walls (obstacle)
+bool Board::checkifvalid(int boardlocation[2]){
+    return true;
+}
+
+// Check what is in boardlocation
+// return possibly a reference to the object itself, ie "&object"
+// Please baby doll no pointers
+// Its too early
+// Im going to hurt you
+std::string Board::check(int boardlocation[2]){
+    return "food"; // typedef()
+}

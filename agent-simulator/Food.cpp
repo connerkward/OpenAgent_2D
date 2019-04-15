@@ -8,6 +8,6 @@
 */
 
 class Food {
-    int location [2];
-    public int healthgain;
+    int location [2] = {2,2}; // placeholders
+    int healthgain = 0; // placeholders
 };

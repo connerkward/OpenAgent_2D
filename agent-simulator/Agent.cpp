@@ -1,61 +1,70 @@
-#include "Food.cpp"
+#include "Food.h"
 #include<iostream>
+#include "Agent.h"
+#include "Board.h"
 using namespace std;
 
-class Agent {
-    int health = 0;
-    int playercord [2];
-	
-	/// EAT
-	void eat(Food somefood) {
-		/// Eating Food will grant health proportional to value of Food
-        health = somefood.healthgain;
-		return;
-	}
+// Constructor
+// param health, spawn and reference to board
+// update spawn, health, and internal reference to board
+Agent::Agent(int h, int innitplayercord[2], Board& b): internalboard(b){
+    //             not really sure what this is called ^               ^
+    health = h;
+    playercord[0] = innitplayercord[0];
+    playercord[1] = innitplayercord[1];
+}
 
-	/// MOVE
-	void move(int direction[2]) {
-        // param is direction to move,
-        //ie [-1,-1] (left and down even if 0,0 is in top left corner)
-        playercord[0] += direction[0];
-        playercord[1] += direction[1];
-		return;
-	}
+/// EAT
+// param somefod item, update health
+void Agent::eat(Food somefood) {
+    /// Eating Food will grant health proportional to value of Food
+    health = somefood.healthgain;
+    return;
+}
 
-	/// RANDOM MOVE 
-	void randomMove() {
-        bool findingmove = true;
-        while(findingmove == true){
-            // GENERATE RANDOM LOCATION
-            int xmove = playercord[0] - rand()%2;
-            int ymove = playercord[1] - rand()%2;
-            
-            // IF OBSTACLE COLLISION
-            // result = Board.check[xmove,ymove];
-            //if(result){
-                //switch(result){
-                // where Board.check[xmove,ymove] is a function that checks location on board and returns an object type, should it exist, the if should be true
-                    //case food:
-                        //eat();
-                        //move();
-                        //break;
-                    //case obstacle: // loop around to regen random location
-                        //return;
-                //}
-            //}
-            
-            // ELSE MOVE
-            //else{
-                //move([xmove,ymove]);
-                //break;
-            //}
+/// MOVE
+// param direction vector, update player position
+void Agent::move(int *direction) {
+    // param is direction to move,
+    //ie [-1,-1] (left and down even if 0,0 is in top left corner)
+    playercord[0] += direction[0];
+    playercord[1] += direction[1];
+    return;
+}
+
+/// RANDOM MOVE
+// update player position randomly
+void Agent::randomMove() {
+    bool findingmove = true;
+    while(findingmove == true){
+        // GENERATE RANDOM LOCATION
+        int xmove = playercord[0] - rand()%2;
+        int ymove = playercord[1] - rand()%2;
+        int vec[2];
+        vec[0] = xmove;
+        vec[1] = ymove;
+        
+        // IF OBSTACLE COLLISION
+        if(internalboard.checkifvalid(vec)){ // checks if "empty" or stepable item
+            auto res = internalboard.check(vec); // is suppossed to return a reference to whatever object is in the spot, "auto" determines its type for now
+            if(res == "food"){// string comparison for now, hopefully some sort of object comparison in the future
+                //eat(res);
+                move(vec);
+                break;
+            }
+            else if(res == "obstacle"){
+                return; // if obstacle do nothing and try to find other random direction
+            }
+            else{
+                return;
+            }
         }
-		return;
-	}
+    }
+    return;
+}
 
-	/// Reduces the health of the Agent by one. 
-	void age() {
-		health -= 1;
-	}
-
-};
+/// AGE
+// Such is life, in the enderverse.
+void Agent::age() {
+    health -= 1;
+}

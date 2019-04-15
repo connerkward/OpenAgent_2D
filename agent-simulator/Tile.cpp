@@ -2,7 +2,7 @@
  This object represents a location on a Board, and can contain Food,
  an Agent, or both.
  */
-class Hex {
+class Tile {
     
     /// TODO: Add representation of Food and/or Agent
     

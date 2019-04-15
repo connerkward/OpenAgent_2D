@@ -13,6 +13,7 @@
 		1B0860A322644C80002F38D6 /* Food.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B08609E22644C80002F38D6 /* Food.cpp */; };
 		1B1FA36222645845007E6C07 /* Obstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B1FA36122645845007E6C07 /* Obstacle.cpp */; };
 		1B1FA36522645D99007E6C07 /* Tile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B1FA36322645D99007E6C07 /* Tile.cpp */; };
+		1B1FA36722645FD7007E6C07 /* testbed.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B1FA36622645FD7007E6C07 /* testbed.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,7 +29,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1B08609022644C06002F38D6 /* agent-simulator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "agent-simulator"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B08609022644C06002F38D6 /* agent-simulator */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; includeInIndex = 0; path = "agent-simulator"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B08609322644C06002F38D6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1B08609B22644C80002F38D6 /* Board.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Board.cpp; sourceTree = "<group>"; };
 		1B08609C22644C80002F38D6 /* Agent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Agent.cpp; sourceTree = "<group>"; };
@@ -36,6 +37,10 @@
 		1B1FA3602264556A007E6C07 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		1B1FA36122645845007E6C07 /* Obstacle.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Obstacle.cpp; sourceTree = "<group>"; };
 		1B1FA36322645D99007E6C07 /* Tile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Tile.cpp; sourceTree = "<group>"; };
+		1B1FA36622645FD7007E6C07 /* testbed.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = testbed.cpp; sourceTree = "<group>"; };
+		1BA0D222226475C7005DE518 /* Agent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Agent.h; sourceTree = "<group>"; };
+		1BA0D2232264760B005DE518 /* Board.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
+		1BA0D22422647771005DE518 /* Food.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Food.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,11 +75,15 @@
 			isa = PBXGroup;
 			children = (
 				1B08609C22644C80002F38D6 /* Agent.cpp */,
+				1BA0D222226475C7005DE518 /* Agent.h */,
 				1B08609B22644C80002F38D6 /* Board.cpp */,
+				1BA0D2232264760B005DE518 /* Board.h */,
 				1B08609E22644C80002F38D6 /* Food.cpp */,
+				1BA0D22422647771005DE518 /* Food.h */,
 				1B08609322644C06002F38D6 /* main.cpp */,
 				1B1FA36122645845007E6C07 /* Obstacle.cpp */,
 				1B1FA36322645D99007E6C07 /* Tile.cpp */,
+				1B1FA36622645FD7007E6C07 /* testbed.cpp */,
 			);
 			path = "agent-simulator";
 			sourceTree = "<group>";
@@ -141,6 +150,7 @@
 				1B1FA36522645D99007E6C07 /* Tile.cpp in Sources */,
 				1B08609422644C06002F38D6 /* main.cpp in Sources */,
 				1B0860A322644C80002F38D6 /* Food.cpp in Sources */,
+				1B1FA36722645FD7007E6C07 /* testbed.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
