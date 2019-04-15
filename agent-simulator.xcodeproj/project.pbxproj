@@ -33,6 +33,7 @@
 		1B08609C22644C80002F38D6 /* Agent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Agent.cpp; sourceTree = "<group>"; };
 		1B08609E22644C80002F38D6 /* Food.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Food.cpp; sourceTree = "<group>"; };
 		1B08609F22644C80002F38D6 /* Hex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hex.cpp; sourceTree = "<group>"; };
+		1B1FA3602264556A007E6C07 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +52,7 @@
 			children = (
 				1B08609222644C06002F38D6 /* agent-simulator */,
 				1B08609122644C06002F38D6 /* Products */,
+				1B1FA3602264556A007E6C07 /* .gitignore */,
 			);
 			sourceTree = "<group>";
 		};
