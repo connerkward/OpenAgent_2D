@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1B08609422644C06002F38D6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B08609322644C06002F38D6 /* main.cpp */; };
-		1B0860A022644C80002F38D6 /* map_generator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B08609A22644C80002F38D6 /* map_generator.cpp */; };
 		1B0860A122644C80002F38D6 /* Board.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B08609B22644C80002F38D6 /* Board.cpp */; };
 		1B0860A222644C80002F38D6 /* Agent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B08609C22644C80002F38D6 /* Agent.cpp */; };
 		1B0860A322644C80002F38D6 /* Food.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B08609E22644C80002F38D6 /* Food.cpp */; };
@@ -30,10 +29,8 @@
 /* Begin PBXFileReference section */
 		1B08609022644C06002F38D6 /* agent-simulator */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "agent-simulator"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B08609322644C06002F38D6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		1B08609A22644C80002F38D6 /* map_generator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = map_generator.cpp; sourceTree = "<group>"; };
 		1B08609B22644C80002F38D6 /* Board.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Board.cpp; sourceTree = "<group>"; };
 		1B08609C22644C80002F38D6 /* Agent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Agent.cpp; sourceTree = "<group>"; };
-		1B08609D22644C80002F38D6 /* map_generator.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = map_generator.hpp; sourceTree = "<group>"; };
 		1B08609E22644C80002F38D6 /* Food.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Food.cpp; sourceTree = "<group>"; };
 		1B08609F22644C80002F38D6 /* Hex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hex.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,8 +69,6 @@
 				1B08609B22644C80002F38D6 /* Board.cpp */,
 				1B08609E22644C80002F38D6 /* Food.cpp */,
 				1B08609F22644C80002F38D6 /* Hex.cpp */,
-				1B08609A22644C80002F38D6 /* map_generator.cpp */,
-				1B08609D22644C80002F38D6 /* map_generator.hpp */,
 				1B08609322644C06002F38D6 /* main.cpp */,
 			);
 			path = "agent-simulator";
@@ -137,7 +132,6 @@
 			files = (
 				1B0860A122644C80002F38D6 /* Board.cpp in Sources */,
 				1B0860A222644C80002F38D6 /* Agent.cpp in Sources */,
-				1B0860A022644C80002F38D6 /* map_generator.cpp in Sources */,
 				1B0860A422644C80002F38D6 /* Hex.cpp in Sources */,
 				1B08609422644C06002F38D6 /* main.cpp in Sources */,
 				1B0860A322644C80002F38D6 /* Food.cpp in Sources */,

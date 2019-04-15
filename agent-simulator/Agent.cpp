@@ -1,22 +1,49 @@
-class Agent {
+#include "Food.cpp"
+#include<iostream>
+using namespace std;
 
-	/// TODO: Add representation of Agent health
-	
-	/// TODO: Add representation of Agent's Hex
+class Agent {
+    int health = 0;
+    int playercord [2];
 	
 	/// If there is Food in the Agent's Hex, it will eat it
-	void eat() {
+    
+    void checkCollision(){
+        // case statement
+        return;
+    }
+    
+	void eat(Food thisfood) {
 		/// Eating Food will grant health proportional to value of Food
+        health = thisfood.healthgain;
 		return;
 	}
 
-	/// Will change an Agent's Hex
-	void move() {
+	/// MOVE
+    // param vec is pointer to first element of vector (direction) array
+	void move(int *vec) {
+        playercord[0] += vec[0];
+        playercord[1] += vec[1];
 		return;
 	}
 
-	/// Randomly moves the Agent's Hex
+	/// RANDOM MOVE 
 	void randomMove() {
+        bool findingmove = true;
+        while(findingmove == true){
+            // GENERATE RANDOM LOCATION
+            int xmove = playercord[0] - rand()%2;
+            int ymove = playercord[1] - rand()%2;
+            
+            // IF OBSTACLE COLLISION
+            //if([xmove,ymove] is inhabited on grid){
+                //case or array of cases -> this we gotta discuss
+            //}
+            // ELSE MOVE
+            //else{
+                //move([xmove,ymove]);
+            //}
+        }
 		return;
 	}
 

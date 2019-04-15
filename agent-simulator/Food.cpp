@@ -7,5 +7,6 @@
 
 */
 class Food {
-
+    int location [2];
+    public int healthgain;
 };
