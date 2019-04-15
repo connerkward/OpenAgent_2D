@@ -18,7 +18,7 @@
 
 /// TODO: Create a string representation for the Board
 
-//Constructor
+// CONSTRUCTOR
 Board::Board(int sizex, int sizey) {
     return;
     }

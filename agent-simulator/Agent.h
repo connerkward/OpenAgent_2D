@@ -20,7 +20,7 @@ public:
     void eat(Food somefood);
     void move(int *direction); // not sure why this is currently a pointer tbh
     void randomMove();
-    void age();
+    bool age();
 private:
     Board& internalboard; // internal reference holder so we can call it later when checking board state
 };

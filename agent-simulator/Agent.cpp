@@ -65,6 +65,12 @@ void Agent::randomMove() {
 
 /// AGE
 // Such is life, in the enderverse.
-void Agent::age() {
+bool Agent::age() {
     health -= 1;
+    if (health < 0){
+        return false;
+    }
+    else{
+        return true;
+    }
 }
