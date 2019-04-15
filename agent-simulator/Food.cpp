@@ -6,6 +6,7 @@
 	value of the Food.
 
 */
+
 class Food {
     int location [2];
     public int healthgain;

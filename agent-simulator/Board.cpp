@@ -18,5 +18,7 @@ class Board {
 	/// TODO: Add a board populator
 
 	/// TODO: Create a string representation for the Board
+    
+    /// TODO: add function check(int boardlocation[2]) that returns a the object or the reference to the object at that location
 
 };

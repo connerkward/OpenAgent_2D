@@ -6,24 +6,19 @@ class Agent {
     int health = 0;
     int playercord [2];
 	
-	/// If there is Food in the Agent's Hex, it will eat it
-    
-    void checkCollision(){
-        // case statement
-        return;
-    }
-    
-	void eat(Food thisfood) {
+	/// EAT
+	void eat(Food somefood) {
 		/// Eating Food will grant health proportional to value of Food
-        health = thisfood.healthgain;
+        health = somefood.healthgain;
 		return;
 	}
 
 	/// MOVE
-    // param vec is pointer to first element of vector (direction) array
-	void move(int *vec) {
-        playercord[0] += vec[0];
-        playercord[1] += vec[1];
+	void move(int direction[2]) {
+        // param is direction to move,
+        //ie [-1,-1] (left and down even if 0,0 is in top left corner)
+        playercord[0] += direction[0];
+        playercord[1] += direction[1];
 		return;
 	}
 
@@ -36,12 +31,23 @@ class Agent {
             int ymove = playercord[1] - rand()%2;
             
             // IF OBSTACLE COLLISION
-            //if([xmove,ymove] is inhabited on grid){
-                //case or array of cases -> this we gotta discuss
+            // result = Board.check[xmove,ymove];
+            //if(result){
+                //switch(result){
+                // where Board.check[xmove,ymove] is a function that checks location on board and returns an object type, should it exist, the if should be true
+                    //case food:
+                        //eat();
+                        //move();
+                        //break;
+                    //case obstacle: // loop around to regen random location
+                        //return;
+                //}
             //}
+            
             // ELSE MOVE
             //else{
                 //move([xmove,ymove]);
+                //break;
             //}
         }
 		return;
