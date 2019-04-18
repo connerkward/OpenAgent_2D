@@ -4,6 +4,7 @@
 #include <iostream>
 #include <chrono> // for timer
 #include <thread> // for timer
+using namespace std;
 
 // MAP
 int LEGNTH = 10;
@@ -24,15 +25,21 @@ int main(){
     Agent agent(health, spawn, myboard);
     Food food;
     
-    for(int i=0; i < 10; i++){
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));
-        agent.age();
-        if (agent.health <= 0){
-            std::cout << "dead!" << "\n";
-            break;
+    for(int i=0; i < LEGNTH; i++){
+        for(int j=0; j < WIDTH; j++){
+            cout << myboard.grid[i][j];
         }
-        std::cout << agent.health;
+        cout << endl;
     }
+//    for(int i=0; i < 10; i++){
+//        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+//        agent.age();
+//        if (agent.health <= 0){
+//            std::cout << "dead!" << "\n";
+//            break;
+//        }
+//        std::cout << agent.health;
+//    }
 
     
     

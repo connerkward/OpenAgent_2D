@@ -27,16 +27,9 @@ using namespace std;
 Board::Board(int x, int y) {
     sizex = x;
     sizey = y;
-    Tile initial_value;
+    Tile emptyTile;
     
-    std::vector<std::vector<Tile>> grid;
-    grid.resize(sizey, std::vector<Tile>(sizex, initial_value));
-    for(int i=0; i < sizex; i++){
-        for(int j=0; j < sizey; j++){
-            cout << grid[i][j];
-        }
-        cout << endl;
-    }
+    grid.resize(sizey, std::vector<Tile>(sizex, emptyTile));
 }
 
 // Check if boardlocation is "valid" for traversal,

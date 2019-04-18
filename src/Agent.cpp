@@ -7,11 +7,11 @@ using namespace std;
 // Constructor
 // param health, spawn and reference to board
 // update spawn, health, and internal reference to board
-Agent::Agent(int innitHealth, int innitplayercord[2], Board& b): internalboard(b){
+Agent::Agent(int innitHealth, int spawn[2], Board& b): internalboard(b){
     //             some things must be done this way        ^
     health = innitHealth;
-    playercord[0] = innitplayercord[0];
-    playercord[1] = innitplayercord[1];
+    playercord[0] = spawn[0];
+    playercord[1] = spawn[1];
 }
 
 /// EAT

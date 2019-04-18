@@ -2,14 +2,23 @@
  This object represents a location on a Board, and can contain Food,
  an Agent, or both.
  */
-#include "Food.h"
-#include "Agent.h"
 #include <iostream>
 #include "Tile.h"
 
-Tile::Tile(int coord[2], Agent a, Food f) : food(f), agent(a){
+//Tile::Tile(int coord[2], Agent a, Food f) : food(f), agent(a){
+//    setCoords(coord);
+//}
+
+Tile::Tile(){
+    int coord[] = {0,0};
     setCoords(coord);
+    tileChar = "-";
 }
+Tile::Tile(int coord[2]){
+    setCoords(coord);
+    tileChar = "-";
+}
+
 /// Sets the coordinates of the Hex
 void Tile::setCoords(int coord[2]) {
     Tilex = coord[0];
@@ -24,8 +33,9 @@ bool Tile::containsFood() {
     return true;
 }
 
-std::ostream& operator<<(std::ostream& os, const Tile& t)
+//overloads the << printer 
+std::ostream& operator<<(std::ostream& os, const Tile& tile)
 {
-    os << "Tile:" << t.Tilex << "/" << t.Tiley;
+    os << tile.tileChar;
     return os;
 }
