@@ -16,9 +16,9 @@ class Agent {
 public:
     int health;
     int playercord [2];
-    Agent(int health, int playercord[2], Board& b); // b is reference to board object instatiated in main
-    void eat(Food somefood);
-    void move(int *direction); // not sure why this is currently a pointer tbh
+    Agent(int innitHealth, int spawn[2], Board& b); // b is reference to board object instatiated in main
+    void eat(Food someFood);
+    void move(int direction[2]);
     void randomMove();
     bool age();
 private:

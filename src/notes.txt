@@ -1,0 +1,12 @@
+
+Some Notes
+
+Passing locations (and "transforms" I suppose we could call them)
+might be better in long term sent as an array of 2 ints
+can discuss the cost benefit of using two integers instead
+
+Board needs constructor updated as a vector matrix
+
+Passing around references to the board
+//(pointer conversion depends on if null state needed)
+

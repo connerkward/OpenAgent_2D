@@ -9,6 +9,11 @@
 */
 #include <string>
 #include "Board.h"
+#include <vector>
+#include <iostream>
+#include "Tile.h"
+
+using namespace std;
 /// TODO: Add representation
 
 /// Should the board have a border?
@@ -19,9 +24,20 @@
 /// TODO: Create a string representation for the Board
 
 // CONSTRUCTOR
-Board::Board(int sizex, int sizey) {
-    return;
+Board::Board(int x, int y) {
+    sizex = x;
+    sizey = y;
+    Tile initial_value;
+    
+    std::vector<std::vector<Tile>> grid;
+    grid.resize(sizey, std::vector<Tile>(sizex, initial_value));
+    for(int i=0; i < sizex; i++){
+        for(int j=0; j < sizey; j++){
+            cout << grid[i][j];
+        }
+        cout << endl;
     }
+}
 
 // Check if boardlocation is "valid" for traversal,
 // Returns true for items, false for walls (obstacle)
@@ -36,4 +52,8 @@ bool Board::checkifvalid(int boardlocation[2]){
 // Im going to hurt you
 std::string Board::check(int boardlocation[2]){
     return "food"; // typedef()
+}
+
+int Board::boardsize(){
+    return sizex*sizey;
 }

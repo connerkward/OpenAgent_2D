@@ -6,8 +6,8 @@
 #include <thread> // for timer
 
 // MAP
-const int LEGNTH = 10;
-const int WIDTH = 30;
+int LEGNTH = 10;
+int WIDTH = 20;
 // SPAWN
 int spawn[2] =
 {
