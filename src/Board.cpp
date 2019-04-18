@@ -8,12 +8,10 @@
 
 */
 #include <string>
-#include "Board.h"
 #include <vector>
 #include <iostream>
-#include "Tile.h"
+#include "Board.h"
 #include "Agent.h"
-
 using namespace std;
 /// TODO: Add representation
 
@@ -23,6 +21,7 @@ using namespace std;
 /// TODO: Add a board populator
 
 /// TODO: Create a string representation for the Board
+class Agent;
 
 // CONSTRUCTOR
 Board::Board(int x, int y) {
@@ -52,15 +51,20 @@ bool Board::checkifvalid(int boardlocation[2]){
 // Its too early
 // Im going to hurt you
 std::string Board::check(int boardlocation[2]){
-    return "food"; // typedef()
+    return ""; // typedef()
 }
 
 int Board::boardsize(){
     return sizex*sizey;
 }
 
-void Board::spawnAgent(Agent agent, int boardlocation[2]){
-    agent.playercord[0] = boardlocation[0];
-    agent.playercord[1] = boardlocation[1];
-    grid[agent.playercord[0]][agent.playercord[1]].tileChar = "@";
+void Board::spawnAgent(Agent &agent, int boardlocation[2]){
+    Agent &thisboy = agent;
+    thisboy.playercord[0] = boardlocation[0];
+    thisboy.playercord[1] = boardlocation[1];
+    grid[thisboy.playercord[0]][thisboy.playercord[1]].tileChar = "@";
+}
+
+void Board::updateBoard(){
+    
 }

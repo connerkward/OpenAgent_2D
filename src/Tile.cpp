@@ -4,7 +4,6 @@
  */
 #include <iostream>
 #include "Tile.h"
-
 //Tile::Tile(int coord[2], Agent a, Food f) : food(f), agent(a){
 //    setCoords(coord);
 //}

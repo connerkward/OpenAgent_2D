@@ -1,7 +1,5 @@
-#include "Food.h"
 #include<iostream>
 #include "Agent.h"
-#include "Board.h"
 using namespace std;
 
 // Constructor
@@ -46,6 +44,7 @@ void Agent::randomMove() {
         vec[1] = ymove;
         
         // IF OBSTACLE COLLISION incomplete
+        // NON WORKING 
         if(internalboard.checkifvalid(vec)){ // checks if "empty" or stepable item
             auto res = internalboard.check(vec); // is suppossed to return a reference to whatever object is in the spot, "auto" determines its type for now
             if(res == "food"){// string comparison for now, hopefully some sort of object comparison in the future
@@ -57,6 +56,7 @@ void Agent::randomMove() {
                 return; // if obstacle do nothing and try to find other random direction
             }
             else{
+                Agent::move(vec);
                 return;
             }
         }

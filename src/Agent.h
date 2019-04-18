@@ -7,19 +7,21 @@
 #define Agent_h
 #include "Food.h"
 #include "Board.h"
+class Board;
 
 class Agent {
 
 public:
     int health;
     int playercord [2];
-    Agent(int innitHealth, int spawn[2], Board& board); // b is reference to board object instatiated in main
+    Agent();
+    Agent(int innitHealth, int spawn[2], Board &board); // b is reference to board object instatiated in main
     void eat(Food someFood);
     void move(int direction[2]);
     void randomMove();
     bool age();
 private:
-    Board& internalboard; // internal reference so we can check board state
+    Board &internalboard; // internal reference so we can check board state
 };
 
 

@@ -1,12 +1,10 @@
 
 Some Notes
 
-Passing locations (and "transforms" I suppose we could call them)
-might be better in long term sent as an array of 2 ints
-can discuss the cost benefit of using two integers instead
+Agent class needs
+- collision handling capabilities
+- random move
+    - is generated, but needs to update the board somehow so the board can print
 
-Board needs constructor updated as a vector matrix
-
-Passing around references to the board
-//(pointer conversion depends on if null state needed)
-
+Board class needs
+- further implement conections between Tile and the visual representation 

@@ -8,11 +8,11 @@
 
 #ifndef Board_h
 #define Board_h
-#include "Agent.h" // as you can see
-
 #include <string>
 #include <vector>
 #include "Tile.h"
+//#include "Agent.h"
+class Agent;
 
 class Board {
 public:
@@ -21,7 +21,9 @@ public:
     std::string check(int boardlocation[2]);
     int boardsize();
     std::vector<std::vector<Tile>> grid;
-    void spawnAgent(Agent agent, int boardlocation[2]); // not sure why this is broken
+    void spawnAgent(Agent &agent, int boardlocation[2]);
+    void updateBoard();
+    
 private:
     const int DEFAULTSIZE = 12; // default for grid, not necessary
     int sizex;
