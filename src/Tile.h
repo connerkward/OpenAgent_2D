@@ -10,6 +10,8 @@
 #define Tile_h
 #include <iostream>
 #include <string>
+#include <vector>
+#include "thing.hpp"
 class Tile{
 private:
     //Food food;
@@ -28,5 +30,7 @@ public:
     bool containsFood();
     friend std::ostream& operator<<(std::ostream& os, const Tile& t);
     std::string tileChar;
+    //std::vector<thing> objects_on_Tile;
+
 };
 #endif /* Tile_h */
