@@ -11,7 +11,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "thing.hpp"
 class Tile{
 private:
     //Food food;
