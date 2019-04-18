@@ -5,11 +5,12 @@
 using namespace std;
 
 // Constructor
-// param health, spawn and reference to board
 // update spawn, health, and internal reference to board
-Agent::Agent(int innitHealth, int spawn[2], Board& b): internalboard(b){
-    //             some things must be done this way        ^
-    health = innitHealth;
+Agent::Agent(int innitHealth, int spawn[2], Board& board):
+    internalboard(board),
+    health(innitHealth)
+    {
+    //      things can be done with default constructor        ^
     playercord[0] = spawn[0];
     playercord[1] = spawn[1];
 }
@@ -23,7 +24,7 @@ void Agent::eat(Food somefood) {
 }
 
 /// MOVE
-// param direction vector, update player position
+// update player position
 void Agent::move(int direction[2]) {
     // param is direction to move,
     //ie [-1,-1] (left and down even if 0,0 is in top left corner)
@@ -44,7 +45,7 @@ void Agent::randomMove() {
         vec[0] = xmove;
         vec[1] = ymove;
         
-        // IF OBSTACLE COLLISION
+        // IF OBSTACLE COLLISION incomplete
         if(internalboard.checkifvalid(vec)){ // checks if "empty" or stepable item
             auto res = internalboard.check(vec); // is suppossed to return a reference to whatever object is in the spot, "auto" determines its type for now
             if(res == "food"){// string comparison for now, hopefully some sort of object comparison in the future

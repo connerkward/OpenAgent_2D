@@ -12,6 +12,7 @@
 #include <vector>
 #include <iostream>
 #include "Tile.h"
+#include "Agent.h"
 
 using namespace std;
 /// TODO: Add representation
@@ -30,6 +31,13 @@ Board::Board(int x, int y) {
     Tile emptyTile;
     
     grid.resize(sizey, std::vector<Tile>(sizex, emptyTile));
+    for(int i=0; i < sizex; i++){
+        for(int j=0; j < sizey; j++){
+            if(i == 0 || j == 0 || i == sizey-1 || j == sizex-1){
+                grid[i][j].tileChar = "*";
+            }
+        }
+    }
 }
 
 // Check if boardlocation is "valid" for traversal,
@@ -49,4 +57,10 @@ std::string Board::check(int boardlocation[2]){
 
 int Board::boardsize(){
     return sizex*sizey;
+}
+
+void Board::spawnAgent(Agent agent, int boardlocation[2]){
+    agent.playercord[0] = boardlocation[0];
+    agent.playercord[1] = boardlocation[1];
+    grid[agent.playercord[0]][agent.playercord[1]].tileChar = "@";
 }

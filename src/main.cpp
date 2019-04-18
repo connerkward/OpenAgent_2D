@@ -7,22 +7,22 @@
 using namespace std;
 
 // MAP
-int LEGNTH = 10;
-int WIDTH = 20;
+int LEGNTH = 5;
+int WIDTH = 8;
 // SPAWN
-int spawn[2] =
+int agent_spawn[2] =
 {
     (LEGNTH)/2,
     (WIDTH)/2
 };
 // OTHER
-int health = 10;
+int agent_health = 10;
 
 // MAIN
 int main(){
     
     Board myboard(LEGNTH,WIDTH);
-    Agent agent(health, spawn, myboard);
+    Agent agent(agent_health, agent_spawn, myboard);
     Food food;
     
     for(int i=0; i < LEGNTH; i++){
@@ -31,6 +31,10 @@ int main(){
         }
         cout << endl;
     }
+    
+    myboard.spawnAgent(agent, agent_spawn)
+
+    // Testing Agent Life Drain
 //    for(int i=0; i < 10; i++){
 //        std::this_thread::sleep_for(std::chrono::milliseconds(500));
 //        agent.age();
@@ -40,8 +44,4 @@ int main(){
 //        }
 //        std::cout << agent.health;
 //    }
-
-    
-    
-    std::cout << "done" << "\n";
 }
