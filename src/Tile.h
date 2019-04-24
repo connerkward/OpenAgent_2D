@@ -14,9 +14,14 @@
 
 class Tile{
 private:
-    //Food food;
-    //Agent agent;
-    int Tilex, Tiley;
+    int Tilex, Tiley; // coords
+    void *Tile_ptr; // pointer to whatever object is "inside" the Tile
+    
+    bool containsFoodBool;
+    bool containsAgentBool;
+    bool containsObstacleBool;
+    // ^ could either have a bunch of bool flags
+    // with some logic that makes sure only bool can be true at once
 public:
     /// Constructs a Hex
     //Tile(int coord[2], Agent a, Food f);
@@ -28,9 +33,11 @@ public:
     bool containsAgent();
     /// Checks if the Hex contains Food
     bool containsFood();
-    friend std::ostream& operator<<(std::ostream& os, const Tile& t);
-    std::string tileChar;
-    //std::vector<thing> objects_on_Tile;
+    /// Checks if the Hex contains Food
+    bool containsObstacle();
+    
+    friend std::ostream& operator<<(std::ostream& os, const Tile& t); // honestly I couldnt tell you how friend works, but it allows Board to simple call cout << Tile
 
+    std::string tileChar; // string containing the single char that gets printed by Board
 };
 #endif /* Tile_h */
