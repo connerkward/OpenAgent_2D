@@ -7,37 +7,45 @@
 //
 
 #ifndef Tile_h
+
 #define Tile_h
+
 #include <iostream>
 #include <string>
 #include <vector>
 
 class Tile{
 private:
-    int Tilex, Tiley; // coords
-    void *Tile_ptr; // pointer to whatever object is "inside" the Tile
     
-    bool containsFoodBool;
-    bool containsAgentBool;
-    bool containsObstacleBool;
-    // ^ could either have a bunch of bool flags
-    // with some logic that makes sure only bool can be true at once
+	Tile(int x, int y);
+
+	int x, int y;
+	Agent* agent;
+	Food* food;
+	bool isObstacle;
+
+	static vector<Tile> tiles;
+
 public:
-    /// Constructs a Hex
-    //Tile(int coord[2], Agent a, Food f);
-    Tile();
-    Tile(int coord[2]);
-    /// Sets the coordinates of the Hex
-    void setCoords(int coord[2]);
-    /// Checks if the Hex contains an Agent
+    
+	Tile tile(int x, int y);
+
     bool containsAgent();
-    /// Checks if the Hex contains Food
-    bool containsFood();
-    /// Checks if the Hex contains Food
+	bool containsFood();
     bool containsObstacle();
+
+	bool giveFood(Food& food);
+	bool giveAgent(Agent& agent);
+
+	bool removeFood();
+	bool removeAgent();
+
+	bool operator==(const Tile& otherTile);
+	bool operator!=(const Tile& otherTile);
     
     friend std::ostream& operator<<(std::ostream& os, const Tile& t); // honestly I couldnt tell you how friend works, but it allows Board to simple call cout << Tile
 
     std::string tileChar; // string containing the single char that gets printed by Board
 };
+
 #endif /* Tile_h */

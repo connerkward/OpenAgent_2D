@@ -15,19 +15,36 @@
 class Agent;
 
 class Board {
-public:
-    Board(int sizex=0, int sizey=0); // defaults , not sure if necessary
-    bool checkifvalid(int boardlocation[2]);
-    std::string check(int boardlocation[2]);
-    int boardsize();
-    std::vector<std::vector<Tile>> grid;
-    void spawnAgent(Agent &agent, int boardlocation[2]);
-    void updateBoard();
-    
+
 private:
-    const int DEFAULTSIZE = 12; // default for grid, not necessary
-    int sizex;
-    int sizey;
+	const int DEFAULTSIZE = 12; // default for grid, not necessary
+	int sizeX;
+	int sizeY;
+	vector<Agent> agents;
+	vector<vector<Tile>> tiles;
+
+	// Removers
+	bool removeAgent(int label);
+	bool removeFood(Tile& tile);
+
+public:
+	// Constructors
+	Board(); 
+	Board(int sizeX, int sizeY); 
+	Board(int sizeX, int sizeY, vector<int[2]> agentLocations,
+		vector<int[2]> foodLocations, vector<int[2]> obstacleLocations);
+
+	// Getters
+	Tile getTile(int x, int y);
+	Agent getAgent(int agentLabel);
+
+	// Setters
+	bool placeAgent(int x, int y, Agent &agent);
+	bool placeObstacle(int x, int y, Obstacle &obstacle);
+	bool placeFood(int x, int y, Food &food);
+
+	bool moveAgent(int label, int dest[2]);
+
 };
 
 #endif /* Board_h */
