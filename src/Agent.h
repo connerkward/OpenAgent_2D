@@ -15,7 +15,7 @@ public:
     int health;
     int playercord [2];
     Agent();
-    Agent(int innitHealth, int spawncoords[2], Board &board); // does agent need board refernce?
+    Agent(int innitHealth, int spawncoords[2], Board &board);
     void eat(Food someFood);
     void move(int direction[2]);
     void randomMove();
