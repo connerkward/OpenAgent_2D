@@ -24,7 +24,7 @@ void Tile::setCoords(int coord[2]) {
 
 // Set Pointer
 void Tile::updatePointerWith(Entity& entToMove){ // the question of the century
-    std::cout << "ENTITY" << entityChar << std::endl; // debug
+    //std::cout << "ENTITY" << entityChar << std::endl; // debug
 
     entityChar = entToMove.entityChar;
     ent = &entToMove;

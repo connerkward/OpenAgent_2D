@@ -20,19 +20,12 @@ private:
     int Tilex;
     int Tiley;
     void setCoords(int coord[2]);
-    Entity* ent;
-	
-	//Agent* agent;
-	//Food* food;
-    
-	//bool isObstacle;
-
-    //static std::vector<Tile> tiles;
+    Entity* ent; // the magical pointer to everything except my sanity
 
 public:
     Tile();
     Tile(int coord[2]);
-    void updatePointerWith(Entity& entToMove);
+    void updatePointerWith(Entity& entToMove); // update pointer (ent) with reference to entity which is to be moved
 
     //bool containsAgent();
 	//bool containsFood();

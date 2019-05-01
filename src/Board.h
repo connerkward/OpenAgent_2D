@@ -65,14 +65,17 @@ public:
     void spawnFood(int coords[2]);
     void spawnObstacle(int coords[2]);
     
-    // Printers
-    void print();
-    
     // Getters
     Tile getTile(int coords[2]);
     
     //Step
-    void step(int steps);
+    void step(int steps); // not yet working, add default as 1 unless user enters parameter
+    
+    // Printers
+    void print();
+    void printUi();
+    
+
     
 //    Board(int sizeX, int sizeY, std::vector<int[2]> agentLocations,
 //          std::vector<int[2]> foodLocations, std::vector<int[2]> obstacleLocations);

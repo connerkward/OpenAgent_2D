@@ -20,8 +20,13 @@ int agent_health = 10;
 // MAIN
 int main(){
     Board board(LEGNTH,WIDTH,AGENTS,FOODS);
-    board.print();
+    
     board.spawnAgent(agent_spawn);
+    int vec[2] = {4,4}; // arbitrary point
+    board.spawnFood(vec);
 
     board.print();
+    board.printUi();
+    //board.step(1);
+    //board.print();
 }
