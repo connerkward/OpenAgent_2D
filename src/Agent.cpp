@@ -3,7 +3,9 @@ using namespace std;
 
 // Look Up Table for Line of Sight
 // Please Replace with algorithm math man
-const int Agent::lookViewRefTable[9][2] = {{-1,-1,},{0,-1},{1,-1},{-1,0},{0,0},{1,0},{-1,1},{0,1},{1,1}};
+const int Agent::lookViewRefTable[9][2] =  {{-1,-1,},{0,-1},{1,-1},{-1,0},{0,0},{1,0},{-1,1},{0,1},{1,1}};
+// this is 0 to 9 of all the direction vectors from top left, left to right (the origin is the top left).
+//which of course, for consistency is of course an array and not a vector. genius
 
 // CONSTRUCTOR
 // update spawn, health, and internal reference to board
@@ -19,7 +21,7 @@ internalboard(board)
 }
 
 
-Agent::Agent(int innitHealth, int spawn[2], Board& board):
+Agent::Agent(int innitHealth, int spawn[2], Board& board): // maybe get constructor chaining
     internalboard(board),
     health(innitHealth)
     {
@@ -42,17 +44,19 @@ void Agent::populateLos(int viewRange){
 /// MOVE
 // update player position
 void Agent::move(int direction[2]){
-    // take in a direction, send its move over to board
+    // take in a direction,
+    // return move over to board, possibly as struct
 }
 
 /// RANDOM MOVE
 void Agent::randomMove(){
-    //
+    // generate a valid random move based off of the line of sight
+    // move();
 }
 
 
 /// EAT
-// param somefod item, update health
+
 void Agent::eat(Food somefood) {
     /// Eating Food will grant health proportional to value of Food
     health = somefood.healthgain;

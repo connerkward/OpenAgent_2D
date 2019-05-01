@@ -28,26 +28,27 @@ private:
 	const int sizeY;
     const int foodCount;
     const int agentCount;
-    const int obstacleCount;
+    const int obstacleCount; // is automatically determined as of now for edges
     
     // Object Pools
     std::vector<Agent> agents;
     std::vector<Food> foods;
     std::vector<Obstacle> obstacles;
+    
     // Pool Iteration Helpers
-    int fCounter;
-    int aCounter;
-    int oCounter;
+    int fCounter; // counts are a c++ invention for keeping track of array numbers
+    int aCounter; // until we can find a better way to use vectors like generators
+    int oCounter; // this is whats happening
 
     // Object Pool for Tiles
     std::vector<std::vector<Tile>> tiles;
     
     // Helpers
-    void fillEmptyTiles();
-    void fillEdgeTiles();
-    void populateFoods();
-    void populateAgents();
-    void populateObstacles();
+    void fillEmptyTiles(); // fills board with empty tiles
+    void fillEdgeTiles(); // filles board edges with obstacles
+    void populateFoods(); // populates the food array
+    void populateAgents(); // populates the agent array
+    void populateObstacles(); // populates the obstacle array
     
 //    // Removers
 //    bool removeAgent(Tile& tile);
@@ -57,7 +58,7 @@ public:
 	// Constructors
 	Board(); 
 	Board(int x, int y);
-    Board(int x, int y, int acount, int fcount);
+    Board(int x, int y, int acount, int fcount); //for setting agentcount and foodcount
     
     // Spawners
     void spawnAgent(int coords[2]);

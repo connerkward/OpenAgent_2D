@@ -33,10 +33,6 @@ public:
     Tile();
     Tile(int coord[2]);
     void updatePointerWith(Entity& entToMove);
-    // note that update pointer is it's future internal interface
-    // however for first steps, public to make it simple, KISS
-    //Tile(int x, int y);
-	//Tile tile(int x, int y);
 
     //bool containsAgent();
 	//bool containsFood();

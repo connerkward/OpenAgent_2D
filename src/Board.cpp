@@ -35,9 +35,6 @@ void Board::populateObstacles(){
 void Board::populateAgents(){
     Agent emptyAgent(*this); // pointer to this instanc of Board
     agents.resize(agentCount, emptyAgent);
-    for(int i=0; i < agentCount; i++){
-        std::cout << &agents[i] << std::endl; //debug
-    }
 }
 void Board::populateFoods(){
     Food emptyFood;

@@ -5,8 +5,7 @@
 #include "Tile.h"
 
 // CONSTRUCTORS
-//Default Constructor
-Tile::Tile(){
+Tile::Tile(){ // find some way to chain constructors perhaps? instead of my repeat code
     int coord[] = {0,0};
     setCoords(coord);
     entityChar = "-";
@@ -46,13 +45,12 @@ void Tile::updatePointerWith(Entity& entToMove){ // the question of the century
 // PRINTERS
 std::ostream& operator<<(std::ostream& os, const Tile& thisTile)
 {
-    //std::cout << bool(thisTile.ent);
-    if (thisTile.ent){
-        os << thisTile.ent->entityChar;
+    if (thisTile.ent){ // if this tile's pointer is pointing (is not NULL)
+        os << thisTile.ent->entityChar; //print out the char of the object that the pointer points to
         return os;
     }
     else {
-        os << thisTile.entityChar;
+        os << thisTile.entityChar; // otherwise pointer is null and use default existing char
         return os;
     }
 

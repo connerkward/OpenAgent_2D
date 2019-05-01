@@ -2,8 +2,8 @@
 //  Entity.hpp
 //  src
 //
-//  Created by Conner K Ward on 4/30/19.
-//  Copyright © 2019 Conner K Ward. All rights reserved.
+// Entity is an abstract base class that holds a string
+// which is used to store the char that represents the subclass of an Entity.
 //
 
 #ifndef Entity_hpp

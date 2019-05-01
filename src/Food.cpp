@@ -10,6 +10,6 @@
 
 Food::Food(){
     healthgain = 1;
-    entityChar = "$";
+    entityChar = "$"; // what can I say, its the dough 
     onFlag = true;
 }

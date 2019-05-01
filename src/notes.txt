@@ -1,10 +1,26 @@
 
-Some Notes
+Some Notes To Self
 
-Agent class needs
-- collision handling capabilities
-- random move
-    - is generated, but needs to update the board somehow so the board can print
+DONT CHANGE ANY HEADER FILES
+DEAR GOD
 
-Board class needs
-- further implement conections between Tile and the visual representation 
+FOR ALL THAT IS HOLY
+
+
+
+
+
+
+
+Everything that is printed to the board an Entity
+
+That means Tiles, Obstacles, Agents, Foods, everything else derived from the superclass Entity
+
+Also notice that theres some wacked up sizeX and sizeY situations in certain for loops.
+It works, but it aint pretty.
+
+
+Any functions commented out might be useful and should be completed or left till nessesary
+
+The reason that we gotta send coordinates around as arrays instead of two values is there is no reasona and its entirely more verbose for no real benefit 
+
