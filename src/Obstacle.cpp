@@ -3,8 +3,10 @@
 //  agent-simulator
 //
 
-///TODO Obstacle as Wall 
+///TODO Obstacle as Wall
 
-class Obstacle{
-    
-};
+#include "Obstacle.h"
+
+Obstacle::Obstacle(){
+    entityChar = "*";
+}

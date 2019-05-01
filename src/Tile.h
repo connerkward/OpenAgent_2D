@@ -13,39 +13,45 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "Entity.hpp"
 
-class Tile{
+class Tile: public Entity{
 private:
+    int Tilex;
+    int Tiley;
+    void setCoords(int coord[2]);
+    Entity* ent;
+	
+	//Agent* agent;
+	//Food* food;
     
-	Tile(int x, int y);
+	//bool isObstacle;
 
-	int x, int y;
-	Agent* agent;
-	Food* food;
-	bool isObstacle;
-
-	static vector<Tile> tiles;
+    //static std::vector<Tile> tiles;
 
 public:
+    Tile();
+    Tile(int coord[2]);
+    void updatePointerWith(Entity& entToMove);
+    // note that update pointer is it's future internal interface
+    // however for first steps, public to make it simple, KISS
+    //Tile(int x, int y);
+	//Tile tile(int x, int y);
+
+    //bool containsAgent();
+	//bool containsFood();
+    //bool containsObstacle();
+
+	//bool giveFood(Food& food);
+	//bool giveAgent(Agent& agent);
+
+	//bool removeFood();
+	//bool removeAgent();
+
+	//bool operator==(const Tile& otherTile);
+	//bool operator!=(const Tile& otherTile);
     
-	Tile tile(int x, int y);
-
-    bool containsAgent();
-	bool containsFood();
-    bool containsObstacle();
-
-	bool giveFood(Food& food);
-	bool giveAgent(Agent& agent);
-
-	bool removeFood();
-	bool removeAgent();
-
-	bool operator==(const Tile& otherTile);
-	bool operator!=(const Tile& otherTile);
-    
-    friend std::ostream& operator<<(std::ostream& os, const Tile& t); // honestly I couldnt tell you how friend works, but it allows Board to simple call cout << Tile
-
-    std::string tileChar; // string containing the single char that gets printed by Board
+    friend std::ostream& operator<<(std::ostream& os, const Tile& thisTile); // honestly I couldnt tell you how friend works, but it allows Board to simple call cout << Tile
 };
 
 #endif /* Tile_h */

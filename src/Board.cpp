@@ -1,70 +1,89 @@
 /**
 	A data structure representing the environment an Agent lives in.
 
-	A Board is made up of Hexes, which can contain either Food or
-	Agents.
-	When Agents move across the boundaries of a Board they appear on 
-	the opposite side of the Board (periodic boundary conditions).
+	A Board is made up of Tiles, which can contain either Food or
+	Agents or Obstacles.
 
 */
-#include <string>
-#include <vector>
-#include <iostream>
 #include "Board.h"
-#include "Agent.h"
-using namespace std;
-/// TODO: Add representation
 
-/// Should the board have a border?
-/// Which class has responsibility for enforcing PBCs?
-
-/// TODO: Add a board populator
-
-/// TODO: Create a string representation for the Board
-class Agent;
-
-// CONSTRUCTOR
-Board::Board(int x, int y) {
-    sizex = x;
-    sizey = y;
-    Tile emptyTile;
+// CONSTRUCTORS
+// populate empty board
+Board::Board(int x, int y, int acount, int fcount) : sizeX(x), sizeY(y), agentCount(acount), foodCount(fcount), obstacleCount(x*y)
+{
+    aCounter = 0;
+    fCounter = 0;
+    oCounter = 0;
     
-    grid.resize(sizey, std::vector<Tile>(sizex, emptyTile));
-    for(int i=0; i < sizex; i++){
-        for(int j=0; j < sizey; j++){
-            if(i == 0 || j == 0 || i == sizey-1 || j == sizex-1){
-                grid[i][j].tileChar = "*";
+    // Build Board
+    populateObstacles();
+    fillEmptyTiles();
+    fillEdgeTiles();
+    
+    // Populate Other Entity Pools
+    populateAgents();
+    populateFoods();
+}
+
+// HELPERS
+// Populators
+void Board::populateObstacles(){
+    const Obstacle emptyObstacle;
+    obstacles.resize(sizeY*sizeX, emptyObstacle);
+}
+void Board::populateAgents(){
+    Agent emptyAgent(*this); // pointer to this instanc of Board
+    agents.resize(agentCount, emptyAgent);
+}
+void Board::populateFoods(){
+    Food emptyFood;
+    foods.resize(foodCount, emptyFood);
+}
+
+// populate board with empty tile instances
+void Board::fillEmptyTiles(){
+    Tile emptyTile;
+    tiles.resize(sizeY, std::vector<Tile>(sizeX, emptyTile));
+}
+
+// populate border with obstacles from obstacle stack
+void Board::fillEdgeTiles(){
+    for(int i=0; i < sizeX; i++){
+        for(int j=0; j < sizeY; j++){
+            if(i == 0 || j == 0 || i == sizeY-1 || j == sizeX-1){
+                int coords[2] = {i,j};
+                spawnObstacle(coords);
             }
         }
     }
 }
 
-// Check if boardlocation is "valid" for traversal,
-// Returns true for items, false for walls (obstacle)
-bool Board::checkifvalid(int boardlocation[2]){
-    return true;
+//SPAWNERS
+void Board::spawnAgent(int coords[2]){
+    tiles[coords[0]][coords[1]].updatePointerWith(&agents[aCounter]);
+    aCounter ++;
+}
+void Board::spawnFood(int coords[2]){
+    tiles[coords[0]][coords[1]].updatePointerWith(*foods[fCounter]);
+    fCounter ++;
+}
+void Board::spawnObstacle(int coords[2]){
+    tiles[coords[0]][coords[1]].updatePointerWith(*obstacles[oCounter]);
+    oCounter ++;
 }
 
-// Check what is in boardlocation
-// return possibly a reference to the object itself, ie "&object"
-// Please baby doll no pointers
-// Its too early
-// Im going to hurt you
-std::string Board::check(int boardlocation[2]){
-    return ""; // typedef()
+// GETTERS
+Tile Board::getTile(int coords[2]){
+    return tiles[coords[0]][coords[1]];
 }
 
-int Board::boardsize(){
-    return sizex*sizey;
+// PRINTERS
+void Board::print(){
+    for(int i=0; i < sizeX; i++){
+        for(int j=0; j < sizeY; j++){
+            std::cout << tiles[i][j];
+        }
+        std::cout << std::endl;
+    }
 }
 
-void Board::spawnAgent(Agent &agent, int boardlocation[2]){
-    Agent &thisboy = agent;
-    thisboy.playercord[0] = boardlocation[0];
-    thisboy.playercord[1] = boardlocation[1];
-    grid[thisboy.playercord[0]][thisboy.playercord[1]].tileChar = "@";
-}
-
-void Board::updateBoard(){
-    
-}

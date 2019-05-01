@@ -8,10 +8,12 @@
 
 #ifndef Food_h
 #define Food_h
-class Food {
+#include "Entity.hpp"
+
+class Food : public Entity{
 public:
-    int location [2];
-    int healthgain; // placeholder
+    Food();
+    int healthgain;
 };
 
 #endif /* Food_h */

@@ -5,25 +5,29 @@
 
 #ifndef Agent_h
 #define Agent_h
+#include "Entity.hpp"
+#include "Tile.h"
 #include "Food.h"
-#include "Board.h"
+
 class Board;
 
-class Agent {
+class Agent : public Entity {
 
 public:
     int health;
     int playercord [2];
-    Agent();
+    Agent(Board& board);
     Agent(int innitHealth, int spawncoords[2], Board &board);
     void eat(Food someFood);
-    void move(int direction[2]);
-    void randomMove();
+    void move(int direction[2]); // may return a struct that contain a move
+    void randomMove(); // may return a struct that contain a move
     bool age();
 private:
-    Tile internalboard[9]; // internal "line of sight"
+    void populateLos(int viewRange);
+    Board &internalboard;
+    Tile lineOfSight[9]; // internal "line of sight"
     // need some way to package the internal board state
-    
+    const static int lookViewRefTable[9][2];
 };
 
 

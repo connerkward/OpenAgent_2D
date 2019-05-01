@@ -6,7 +6,9 @@
 	value of the Food.
 
 */
-class Food {
-    int location [2] = {2,2}; // placeholders
-    int healthgain = 0; // placeholders
-};
+#include "Food.h"
+
+Food::Food(){
+    healthgain = 1;
+    entityChar = "$";
+}

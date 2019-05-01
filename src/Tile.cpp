@@ -2,39 +2,48 @@
  This object represents a location on a Board, and can contain Food,
  an Agent, or both.
  */
-#include <iostream>
 #include "Tile.h"
-//Tile::Tile(int coord[2], Agent a, Food f) : food(f), agent(a){
-//    setCoords(coord);
-//}
 
+// CONSTRUCTORS
+//Default Constructor
 Tile::Tile(){
     int coord[] = {0,0};
     setCoords(coord);
-    tileChar = "-";
+    entityChar = "-";
 }
 Tile::Tile(int coord[2]){
     setCoords(coord);
-    tileChar = "-";
+    entityChar = "-";
 }
 
-/// Sets the coordinates of the Hex
+// SETTERS
+/// Set Tile Coordinate
 void Tile::setCoords(int coord[2]) {
     Tilex = coord[0];
-    Tiley = coord[0];
-}
-/// Checks if the Hex contains an Agent
-bool Tile::containsAgent() {
-    return true;
-}
-/// Checks if the Hex contains Food
-bool Tile::containsFood() {
-    return true;
+    Tiley = coord[1];
 }
 
-//overloads the << printer 
-std::ostream& operator<<(std::ostream& os, const Tile& tile)
+// Set Pointer
+void Tile::updatePointerWith(Entity entToMove){ // the question of the century
+    entityChar = entToMove.entityChar;
+    ent = &entToMove;
+}
+
+
+
+// GETTERS
+///// Checks if the Hex contains an Agent
+//bool Tile::containsAgent() {
+//    return true;
+//}
+///// Checks if the Hex contains Food
+//bool Tile::containsFood() {
+//    return true;
+//}
+
+// PRINTERS
+std::ostream& operator<<(std::ostream& os, const Tile& thisTile)
 {
-    os << tile.tileChar;
+    os << thisTile.entityChar;
     return os;
 }

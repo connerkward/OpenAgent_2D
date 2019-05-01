@@ -8,6 +8,11 @@
 
 #ifndef Obstacle_h
 #define Obstacle_h
+#include "Entity.hpp"
 
+class Obstacle: public Entity{
+public:
+    Obstacle();
+};
 
 #endif /* Obstacle_h */
