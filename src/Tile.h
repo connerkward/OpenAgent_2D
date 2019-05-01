@@ -15,7 +15,7 @@
 #include <vector>
 #include "Entity.hpp"
 
-class Tile: public Entity{
+class Tile: public Entity {
 private:
     int Tilex;
     int Tiley;

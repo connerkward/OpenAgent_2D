@@ -10,7 +10,7 @@
 #define Obstacle_h
 #include "Entity.hpp"
 
-class Obstacle: public Entity{
+class Obstacle: public Entity {
 public:
     Obstacle();
 };

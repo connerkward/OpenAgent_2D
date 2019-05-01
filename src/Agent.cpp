@@ -11,6 +11,7 @@ Agent::Agent(Board& board):
 internalboard(board)
 {
     health = 10;
+    onFlag = true;
     playercord[0] = 0;
     playercord[1] = 0;
     entityChar = "@";
@@ -34,16 +35,20 @@ void Agent::populateLos(int viewRange){
         int coords[2];
         coords[0] = lookViewRefTable[i][0]*viewRange;
         coords[1] = lookViewRefTable[i][1]*viewRange;
-        //lineOfSight[i] = internalboard.; // the final piece of pie
+        //lineOfSight[i] = internalboard.?; // the final piece of pie
     }
 }
 
 /// MOVE
 // update player position
-
+void Agent::move(int direction[2]){
+    // take in a direction, send its move over to board
+}
 
 /// RANDOM MOVE
-
+void Agent::randomMove(){
+    //
+}
 
 
 /// EAT

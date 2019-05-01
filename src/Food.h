@@ -10,10 +10,11 @@
 #define Food_h
 #include "Entity.hpp"
 
-class Food : public Entity{
+class Food : public Entity {
 public:
     Food();
     int healthgain;
+    bool onFlag;
 };
 
 #endif /* Food_h */

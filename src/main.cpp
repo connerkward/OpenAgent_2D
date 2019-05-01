@@ -11,8 +11,8 @@ int FOODS = 1;
 // SPAWN
 int agent_spawn[2] =
 {
-    (LEGNTH)/2,
-    (WIDTH)/2
+    (WIDTH)/2,
+    (LEGNTH)/2
 };
 // OTHER
 int agent_health = 10;
@@ -20,6 +20,8 @@ int agent_health = 10;
 // MAIN
 int main(){
     Board board(LEGNTH,WIDTH,AGENTS,FOODS);
+    board.print();
     board.spawnAgent(agent_spawn);
+
     board.print();
 }

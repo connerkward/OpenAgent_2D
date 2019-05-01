@@ -11,4 +11,5 @@
 Food::Food(){
     healthgain = 1;
     entityChar = "$";
+    onFlag = true;
 }

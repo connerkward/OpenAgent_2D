@@ -70,20 +70,16 @@ public:
     // Getters
     Tile getTile(int coords[2]);
     
-
+    //Step
+    void step(int steps);
     
 //    Board(int sizeX, int sizeY, std::vector<int[2]> agentLocations,
 //          std::vector<int[2]> foodLocations, std::vector<int[2]> obstacleLocations);
 //
 //    // Getters
 //    Agent getAgent(int agentLabel);
-//
-//    // Setters
-//    bool placeAgent(int x, int y, Agent &agent);
-//    bool placeObstacle(int x, int y, Obstacle &obstacle);
-//    bool placeFood(int x, int y, Food &food);
-//
-//    bool moveAgent(int label, int dest[2]);
+
+//    bool moveAgent(int label, int dest[2]); 
 };
 
 #endif /* Board_h */

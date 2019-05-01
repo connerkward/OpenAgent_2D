@@ -24,7 +24,9 @@ void Tile::setCoords(int coord[2]) {
 }
 
 // Set Pointer
-void Tile::updatePointerWith(Entity entToMove){ // the question of the century
+void Tile::updatePointerWith(Entity& entToMove){ // the question of the century
+    std::cout << "ENTITY" << entityChar << std::endl; // debug
+
     entityChar = entToMove.entityChar;
     ent = &entToMove;
 }
@@ -44,6 +46,14 @@ void Tile::updatePointerWith(Entity entToMove){ // the question of the century
 // PRINTERS
 std::ostream& operator<<(std::ostream& os, const Tile& thisTile)
 {
-    os << thisTile.entityChar;
-    return os;
+    //std::cout << bool(thisTile.ent);
+    if (thisTile.ent){
+        os << thisTile.ent->entityChar;
+        return os;
+    }
+    else {
+        os << thisTile.entityChar;
+        return os;
+    }
+
 }

@@ -22,6 +22,8 @@ public:
     void move(int direction[2]); // may return a struct that contain a move
     void randomMove(); // may return a struct that contain a move
     bool age();
+    bool onFlag; // to flag if agent is active on board
+    
 private:
     void populateLos(int viewRange);
     Board &internalboard;

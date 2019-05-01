@@ -10,7 +10,6 @@
 #define Entity_hpp
 
 #include <string>
-
 class Entity{
 public:
     Entity();
