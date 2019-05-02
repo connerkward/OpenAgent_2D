@@ -15,7 +15,7 @@ class Agent : public Entity {
 
 public:
     int health;
-    int playercord [2];
+    int agentCoord [2];
     Agent(Board& board);
     Agent(int innitHealth, int spawncoords[2], Board &board);
     void eat(Food someFood);
@@ -23,6 +23,7 @@ public:
     void randomMove();
     bool age();
     bool onFlag; // to flag if agent is active on board
+    Agent& setCoord(int coord[2]);
     
 private:
     void populateLos(int viewRange);

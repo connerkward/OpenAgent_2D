@@ -24,9 +24,11 @@ int main(){
     board.spawnAgent(agent_spawn);
     int vec[2] = {4,4}; // arbitrary point
     board.spawnFood(vec);
-
     board.print();
-    board.printUi();
-    //board.step(1);
-    //board.print();
+    //board.printUi();
+    while(true){
+        board.step(1);
+        board.print();
+        std::this_thread::sleep_for (std::chrono::seconds(1));
+    }
 }

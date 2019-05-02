@@ -27,6 +27,7 @@ public:
     Tile(int coord[2]);
     void updatePointerWith(Entity& entToMove); // update pointer (ent) with reference to entity which is to be moved
 
+    void removePointer();
     //bool containsAgent();
 	//bool containsFood();
     //bool containsObstacle();

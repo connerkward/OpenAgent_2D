@@ -69,8 +69,7 @@ void Board::fillEdgeTiles(){
 
 //SPAWNERS
 void Board::spawnAgent(int coords[2]){
-    tiles[coords[0]][coords[1]].updatePointerWith(agents[aCounter]);
-    //std::cout << "acounter:" << aCounter << std::endl;
+    tiles[coords[0]][coords[1]].updatePointerWith(agents[aCounter].setCoord(coords));
     aCounter ++;
 }
 void Board::spawnFood(int coords[2]){
@@ -84,6 +83,7 @@ void Board::spawnObstacle(int coords[2]){
     oCounter ++;
 }
 
+// STEPPER
 void Board::step(int steps = 1){ // not working
     for(int i=0; i <= steps; i++){
         for(int i=0; i < agentCount; i++){
@@ -92,6 +92,11 @@ void Board::step(int steps = 1){ // not working
             }
         }
     }
+}
+
+void Board::moveAgent(Agent& agent, int coords[2]){
+    tiles[agent.agentCoord[0]][agent.agentCoord[0]].removePointer();
+    tiles[coords[0]][coords[1]].updatePointerWith(agent);
 }
 
 // GETTERS

@@ -70,6 +70,7 @@ public:
     
     //Step
     void step(int steps); // not yet working, add default as 1 unless user enters parameter
+    void moveAgent(Agent& agent, int coords[2]);
     
     // Printers
     void print();

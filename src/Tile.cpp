@@ -26,10 +26,14 @@ void Tile::setCoords(int coord[2]) {
 void Tile::updatePointerWith(Entity& entToMove){ // the question of the century
     //std::cout << "ENTITY" << entityChar << std::endl; // debug
 
-    entityChar = entToMove.entityChar;
+    //entityChar = entToMove.entityChar;
     ent = &entToMove;
 }
 
+void Tile::removePointer(){
+    entityChar = "-";
+    ent = nullptr;
+}
 
 
 // GETTERS

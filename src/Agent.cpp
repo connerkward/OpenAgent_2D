@@ -1,4 +1,6 @@
+#include "Board.h"
 #include "Agent.h"
+#include <cstdlib>
 using namespace std;
 
 // Look Up Table for Line of Sight
@@ -14,10 +16,10 @@ internalboard(board)
 {
     health = 10;
     onFlag = true;
-    playercord[0] = 0;
-    playercord[1] = 0;
+    agentCoord[0] = 0;
+    agentCoord[1] = 0;
     entityChar = "@";
-    populateLos(1);
+    //populateLos(1);
 }
 
 
@@ -25,33 +27,47 @@ Agent::Agent(int innitHealth, int spawn[2], Board& board): // maybe get construc
     internalboard(board),
     health(innitHealth)
     {
-    playercord[0] = spawn[0];
-    playercord[1] = spawn[1];
+    agentCoord[0] = spawn[0];
+    agentCoord[1] = spawn[1];
     entityChar = "@";
-    populateLos(1);
+    //populateLos(1);
 }
 
 // Populate LOS
 void Agent::populateLos(int viewRange){
     for (int i = 0; i < 10; i++){
         int coords[2];
-        coords[0] = lookViewRefTable[i][0]*viewRange;
-        coords[1] = lookViewRefTable[i][1]*viewRange;
-        //lineOfSight[i] = internalboard.?; // the final piece of pie
+        coords[0] = agentCoord[0] + lookViewRefTable[i][0]*viewRange;
+        coords[1] = agentCoord[0] + lookViewRefTable[i][1]*viewRange;
+        //lineOfSight[i] = internalboard.getTile(coords); // the final piece of pie
     }
+}
+
+Agent& Agent::setCoord(int coord[2]){
+    agentCoord[0] = coord[0];
+    agentCoord[1] = coord[1];
+    return *this;
 }
 
 /// MOVE
 // update player position
-void Agent::move(int direction[2]){
+void Agent::move(int coord[2]){
+    agentCoord[0] = coord[0];
+    agentCoord[1] = coord[1];
     // take in a direction,
-    // return move over to board, possibly as struct
+    internalboard.moveAgent(*this, coord);
 }
 
 /// RANDOM MOVE
 void Agent::randomMove(){
-    // generate a valid random move based off of the line of sight
-    // move();
+    //populateLos(1);
+    int coord[2];
+    std::srand(time(0));
+    int rand = (std::rand() % 9);
+    coord[0] = agentCoord[0] + lookViewRefTable[rand][0];
+    coord[1] = agentCoord[1] + lookViewRefTable[rand][1];
+    std::cout << "going to" << agentCoord[0] << agentCoord[1] << std::endl;
+    move(coord);
 }
 
 
