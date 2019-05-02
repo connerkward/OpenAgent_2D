@@ -14,8 +14,11 @@
 class Agent;
 
 struct agentMovePackage{
+public:
     void addAgentMovePair(Agent& agent, int move[2]);
-    int numberElems;
+    void print();
+    friend std::ostream& operator<<(std::ostream& os, const agentMovePackage& thispackage);
+    int numberElems =0;
     struct element{
         element(Agent& agent, int move[2]);
         Agent& a;

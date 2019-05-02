@@ -23,7 +23,7 @@ public:
     
     // Board Access
     agentMovePackage getMoves();
-    Agent& spawnAgent();
+    Agent& spawnAgent(int coords[2]);
     void despawnAgent(Agent& agent);
     int* getAgentCoords(Agent& agent);
     
@@ -36,7 +36,7 @@ private:
     std::vector<Agent> agents;
     
     // Helpers
-    void populateAgents(int anum, Board &board);
+    void populateAgents(int anum);
     Agent& findAvailAgent();
     agentMovePackage moveAgents();
     

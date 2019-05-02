@@ -10,21 +10,29 @@
 #include "Food.h"
 #include <cstdlib>
 
-class AgentManager;
 class Board;
 
 class Agent : public Entity {
 
 public:
+    // Initial Variables
     int health;
     int agentCoord [2];
+    
+    // Constructors
     Agent(Board& board);
     Agent(int innitHealth, int spawncoords[2], Board& board);
+    
+    // Actions
     void eat(Food someFood);
+    bool age();
     void move(int direction[2]);
     int* randomMove(); // for returning coord array
-    bool age();
-    bool onFlag; // to flag if agent is active on board
+    
+    
+    Agent& setAgentCoords(int coord[2]);
+    
+    bool onFlag; // to flag if agent is active on board, public for now
     
 private:
     int numofPosMoves;
@@ -32,9 +40,12 @@ private:
     void populateLos();
     Board& internalBoard;
     std:: vector<Tile> lineOfSight; // internal "line of sight"
-    const static int lookViewRefTable[9][2];
     void GenerateValidMoves(int viewRange);
     int viewRange;
+    
+    // Reference Coords
+    const static int lookViewRefTable[9][2];
+
     // this is that direction reference dictionary we talked about that holds all the possible moves (ie (-1,1), (0,-1) etc) which can be iterated through and also multiplied by for  line of sight 
 };
 

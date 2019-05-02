@@ -60,36 +60,40 @@ void Board::fillEdgeTiles(){
 }
 // step the board
 void Board::updateBoard(agentMovePackage movePackage){
+    std::cout << "number of elems" << movePackage.numberElems << std::endl;
     for(int i=0; i < movePackage.numberElems; i++){
         // create throwaway coord of tileToMoveTo
         int coords[2];
         // first set coords to the current elements's agent's current coords
         coords[0] = aManager.getAgentCoords(movePackage.moveArray[i].a)[0];
         coords[1] = aManager.getAgentCoords(movePackage.moveArray[i].a)[1];
-        
+        std::cout << "move from" << coords[0] << coords[1] << std::endl;
         //remove current tile pointer
         tiles[coords[0]][coords[1]].clearPointer();
         
         // acces movepackage, iterate through elements, add move to current coords
-        coords[0] = coords[0]+movePackage.moveArray[i].move[0];
-        coords[1] = coords[1]+movePackage.moveArray[i].move[1];
-        
+        coords[0] = movePackage.moveArray[i].move[0];
+        coords[1] = movePackage.moveArray[i].move[1];
+        std::cout << "move to" << coords[0] << coords[1] << std::endl;
+        movePackage.moveArray[i].a.setAgentCoords(coords);
+
+
         // update Tiles
         tiles[coords[0]][coords[1]].updatePointerWith(movePackage.moveArray[i].a);
-
     }
 }
 void Board::step(int steps){
     updateBoard(aManager.getMoves());
 }
 // GETTERS
-Tile Board::getTile(int coords[2]){
-    return tiles[coords[0]][coords[1]];
+Tile& Board::getTile(int coords[2]){
+    Tile& ptr = tiles[coords[0]][coords[1]];
+    return ptr;
 }
 
 //SPAWNERS
 void Board::spawnAgent(int coords[2]){
-    tiles[coords[0]][coords[1]].updatePointerWith(aManager.spawnAgent());
+    tiles[coords[0]][coords[1]].updatePointerWith(aManager.spawnAgent(coords));
 }
 void Board::spawnFood(int coords[2]){
     tiles[coords[0]][coords[1]].updatePointerWith(foods[fCounter]);

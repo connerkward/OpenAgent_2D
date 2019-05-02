@@ -20,9 +20,6 @@ internalBoard(board)
     entityChar = "@";
     viewRange = 1;
     numofPosMoves = 0;
-    GenerateValidMoves(viewRange);
-
-    
 }
 
 
@@ -30,52 +27,57 @@ Agent::Agent(int innitHealth, int spawn[2], Board& board): // maybe get construc
     internalBoard(board),
     health(innitHealth)
     {
-    agentCoord[0] = spawn[0];
-    agentCoord[1] = spawn[1];
-    entityChar = "@";
-    viewRange = 1;
-    numofPosMoves = 0;
-    GenerateValidMoves(viewRange);
+        setAgentCoords(spawn);
+        entityChar = "@";
+        viewRange = 1;
+        numofPosMoves = 0;
 }
 
 // INTERNAL HELPERS
+// Set Coords
+Agent& Agent::setAgentCoords(int coord[2]){
+    agentCoord[0] = coord[0];
+    agentCoord[1] = coord[1];
+    return *this;
+}
+
+// Find Valid Moves
 void Agent::GenerateValidMoves(int viewRange){
     numofPosMoves = 0;
     possibleMoves.clear();
     
     int lookCoord[2];
-    for (int i = 0; i <= 9; i++){ //i*viewRange
+    for (int i = 0; i < 9; i++){ //i*viewRange
         lookCoord[0] = agentCoord[0] + lookViewRefTable[i][0];
         lookCoord[1] = agentCoord[1] + lookViewRefTable[i][1];
+        std::cout << "tile contains " << internalBoard.getTile(lookCoord).containsSomething() << std::endl;
         if (!internalBoard.getTile(lookCoord).containsSomething()){
             possibleMoves.push_back(i);
             numofPosMoves++;
         }
     }
 }
-void Agent::populateLos(){
 
-}
 
 
 /// MOVE
-//void Agent::move(){
-//    lookViewRefTable
-//}
+
 /// RANDOM MOVE
 int* Agent::randomMove(){
     // generate a valid random move based off of the line of sight
     GenerateValidMoves(viewRange);
     // create move();
     static int thismove[2];
-    thismove[0] = lookViewRefTable[possibleMoves[(rand() % numofPosMoves)]][0];
-    thismove[1] = lookViewRefTable[possibleMoves[(rand() % numofPosMoves)]][1];
+    thismove[0] = agentCoord[0] + lookViewRefTable[possibleMoves[(rand() % numofPosMoves)]][0];
+    thismove[1] = agentCoord[1] + lookViewRefTable[possibleMoves[(rand() % numofPosMoves)]][1];
+    //std::cout << numofPosMoves << thismove[0] << thismove[1] << endl;
     return thismove;
 }
 
 
-/// EAT
 
+
+/// EAT
 void Agent::eat(Food somefood) {
     /// Eating Food will grant health proportional to value of Food
     health = somefood.healthgain;

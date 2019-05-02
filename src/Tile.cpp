@@ -31,6 +31,7 @@ void Tile::updatePointerWith(Entity& entToMove){ // the question of the century
 }
 
 void Tile::clearPointer(){
+    entityChar = "-";
     ent = nullptr;
 }
 
@@ -57,7 +58,7 @@ bool Tile::containsSomething(){
 // PRINTERS
 std::ostream& operator<<(std::ostream& os, const Tile& thisTile)
 {
-    if (thisTile.ent){ // if this tile's pointer is pointing (is not NULL)
+    if (thisTile.ent != nullptr){ // if this tile's pointer is pointing (is not NULL)
         os << thisTile.ent->entityChar; //print out the char of the object that the pointer points to
         return os;
     }

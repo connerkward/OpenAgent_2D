@@ -28,6 +28,7 @@ public:
     void updatePointerWith(Entity& entToMove); // update pointer (ent) with reference to entity which is to be moved
     void clearPointer(); // update pointer (ent) with reference to entity which is to be moved
     bool containsSomething();
+    bool containsObstacle;
 
 
     //bool containsAgent();

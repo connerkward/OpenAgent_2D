@@ -27,6 +27,9 @@ int main(){
 
     board.print();
     //board.printUi();
-    //board.step(1);
-    //board.print();
+    while(true){
+        board.step(1);
+        board.print();
+        std::this_thread::sleep_for (std::chrono::seconds(1));
+    }
 }

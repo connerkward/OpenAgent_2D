@@ -69,7 +69,7 @@ public:
     
     // Getters
     
-    Tile getTile(int coords[2]);
+    Tile& getTile(int coords[2]);
     
     //Step
     void step(int steps); // not yet working, add default as 1 unless user enters parameter
