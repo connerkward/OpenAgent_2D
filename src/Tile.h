@@ -31,6 +31,7 @@ public:
     bool containsObstacle;
 
 
+    void removePointer();
     //bool containsAgent();
 	//bool containsFood();
     //bool containsObstacle();

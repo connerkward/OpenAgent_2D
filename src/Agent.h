@@ -29,15 +29,12 @@ public:
     void move(int direction[2]);
     int* randomMove(); // for returning coord array
     
-    
-    Agent& setAgentCoords(int coord[2]);
-    
     bool onFlag; // to flag if agent is active on board, public for now
+    Agent& setAgentCoord(int coord[2]);
     
 private:
     int numofPosMoves;
     std::vector<int> possibleMoves;
-    void populateLos();
     Board& internalBoard;
     std:: vector<Tile> lineOfSight; // internal "line of sight"
     void GenerateValidMoves(int viewRange);

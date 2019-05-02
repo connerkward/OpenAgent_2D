@@ -1,5 +1,7 @@
+#include "Board.h"
 #include "Agent.h"
 #include "Board.h"
+#include <cstdlib>
 using namespace std;
 
 // Look Up Table for Line of Sight
@@ -27,7 +29,7 @@ Agent::Agent(int innitHealth, int spawn[2], Board& board): // maybe get construc
     internalBoard(board),
     health(innitHealth)
     {
-        setAgentCoords(spawn);
+        setAgentCoord(spawn);
         entityChar = "@";
         viewRange = 1;
         numofPosMoves = 0;
@@ -35,7 +37,7 @@ Agent::Agent(int innitHealth, int spawn[2], Board& board): // maybe get construc
 
 // INTERNAL HELPERS
 // Set Coords
-Agent& Agent::setAgentCoords(int coord[2]){
+Agent& Agent::setAgentCoord(int coord[2]){
     agentCoord[0] = coord[0];
     agentCoord[1] = coord[1];
     return *this;
@@ -74,12 +76,18 @@ int* Agent::randomMove(){
     return thismove;
 }
 
-
-
+/// MOVE
+// update player position
+void Agent::move(int coord[2]){
+    agentCoord[0] = coord[0];
+    agentCoord[1] = coord[1];
+    // take in a direction,
+    internalBoard.moveAgent(*this, coord);
+}
 
 /// EAT
 void Agent::eat(Food somefood) {
-    /// Eating Food will grant health proportional to value of Food
+    /// EatinternalBoard grant health proportional to value of Food
     health = somefood.healthgain;
     return;
 }

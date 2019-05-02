@@ -75,7 +75,7 @@ void Board::updateBoard(agentMovePackage movePackage){
         coords[0] = movePackage.moveArray[i].move[0];
         coords[1] = movePackage.moveArray[i].move[1];
         std::cout << "move to" << coords[0] << coords[1] << std::endl;
-        movePackage.moveArray[i].a.setAgentCoords(coords);
+        movePackage.moveArray[i].a.setAgentCoord(coords);
 
 
         // update Tiles
@@ -104,6 +104,11 @@ void Board::spawnObstacle(int coords[2]){
     tiles[coords[0]][coords[1]].updatePointerWith(obstacles[oCounter]);
     //std::cout << "ocounter:"  << oCounter<< std::endl;
     oCounter ++;
+}
+
+void Board::moveAgent(Agent& agent, int coords[2]){
+    tiles[agent.agentCoord[0]][agent.agentCoord[0]].clearPointer();
+    tiles[coords[0]][coords[1]].updatePointerWith(agent);
 }
 
 // PRINTERS

@@ -24,7 +24,6 @@ int main(){
     board.spawnAgent(agent_spawn);
     int vec[2] = {4,4}; // arbitrary point
     board.spawnFood(vec);
-
     board.print();
     //board.printUi();
     while(true){
