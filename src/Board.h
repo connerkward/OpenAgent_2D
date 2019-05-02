@@ -14,15 +14,12 @@
 #include "Food.h"
 #include "Tile.h"
 #include "Obstacle.h"
-
-#include "Agent.h"
-//class Agent;
+#include "AgentManager.hpp"
+#include "agentMovePackage.hpp"
 
 class Board {
 
 private:
-    friend class Agent;
-    
     // Initial Board Parameters
 	const int sizeX;
 	const int sizeY;
@@ -31,9 +28,13 @@ private:
     const int obstacleCount; // is automatically determined as of now for edges
     
     // Object Pools
-    std::vector<Agent> agents;
+    AgentManager aManager;
     std::vector<Food> foods;
     std::vector<Obstacle> obstacles;
+    // replace each entity type with managers such that
+    // AgentManager<-GameManager->Board
+    // ObstacleManager<-GameManager->FoodManager
+    // where Board is essentially "TileManager"
     
     // Pool Iteration Helpers
     int fCounter; // counts are a c++ invention for keeping track of array numbers
@@ -49,13 +50,14 @@ private:
     void populateFoods(); // populates the food array
     void populateAgents(); // populates the agent array
     void populateObstacles(); // populates the obstacle array
+    void updateBoard(agentMovePackage movePackage);
     
 //    // Removers
 //    bool removeAgent(Tile& tile);
 //    bool removeFood(Tile& tile);
 
 public:
-	// Constructors
+    // Constructors
 	Board(); 
 	Board(int x, int y);
     Board(int x, int y, int acount, int fcount); //for setting agentcount and foodcount
@@ -66,6 +68,7 @@ public:
     void spawnObstacle(int coords[2]);
     
     // Getters
+    
     Tile getTile(int coords[2]);
     
     //Step

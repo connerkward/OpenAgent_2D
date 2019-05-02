@@ -30,6 +30,18 @@ void Tile::updatePointerWith(Entity& entToMove){ // the question of the century
     ent = &entToMove;
 }
 
+void Tile::clearPointer(){
+    ent = nullptr;
+}
+
+bool Tile::containsSomething(){
+    if (ent == nullptr){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
 
 
 // GETTERS

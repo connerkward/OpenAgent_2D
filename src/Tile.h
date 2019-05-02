@@ -26,6 +26,9 @@ public:
     Tile();
     Tile(int coord[2]);
     void updatePointerWith(Entity& entToMove); // update pointer (ent) with reference to entity which is to be moved
+    void clearPointer(); // update pointer (ent) with reference to entity which is to be moved
+    bool containsSomething();
+
 
     //bool containsAgent();
 	//bool containsFood();
@@ -34,8 +37,6 @@ public:
 	//bool giveFood(Food& food);
 	//bool giveAgent(Agent& agent);
 
-	//bool removeFood();
-	//bool removeAgent();
 
 	//bool operator==(const Tile& otherTile);
 	//bool operator!=(const Tile& otherTile);

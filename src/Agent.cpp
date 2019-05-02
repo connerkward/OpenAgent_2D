@@ -1,4 +1,5 @@
 #include "Agent.h"
+#include "Board.h"
 using namespace std;
 
 // Look Up Table for Line of Sight
@@ -10,48 +11,66 @@ const int Agent::lookViewRefTable[9][2] =  {{-1,-1,},{0,-1},{1,-1},{-1,0},{0,0},
 // CONSTRUCTOR
 // update spawn, health, and internal reference to board
 Agent::Agent(Board& board):
-internalboard(board)
+internalBoard(board)
 {
     health = 10;
     onFlag = true;
-    playercord[0] = 0;
-    playercord[1] = 0;
+    agentCoord[0] = 0;
+    agentCoord[1] = 0;
     entityChar = "@";
-    populateLos(1);
+    viewRange = 1;
+    numofPosMoves = 0;
+    GenerateValidMoves(viewRange);
+
+    
 }
 
 
 Agent::Agent(int innitHealth, int spawn[2], Board& board): // maybe get constructor chaining
-    internalboard(board),
+    internalBoard(board),
     health(innitHealth)
     {
-    playercord[0] = spawn[0];
-    playercord[1] = spawn[1];
+    agentCoord[0] = spawn[0];
+    agentCoord[1] = spawn[1];
     entityChar = "@";
-    populateLos(1);
+    viewRange = 1;
+    numofPosMoves = 0;
+    GenerateValidMoves(viewRange);
 }
 
-// Populate LOS
-void Agent::populateLos(int viewRange){
-    for (int i = 0; i < 10; i++){
-        int coords[2];
-        coords[0] = lookViewRefTable[i][0]*viewRange;
-        coords[1] = lookViewRefTable[i][1]*viewRange;
-        //lineOfSight[i] = internalboard.?; // the final piece of pie
+// INTERNAL HELPERS
+void Agent::GenerateValidMoves(int viewRange){
+    numofPosMoves = 0;
+    possibleMoves.clear();
+    
+    int lookCoord[2];
+    for (int i = 0; i <= 9; i++){ //i*viewRange
+        lookCoord[0] = agentCoord[0] + lookViewRefTable[i][0];
+        lookCoord[1] = agentCoord[1] + lookViewRefTable[i][1];
+        if (!internalBoard.getTile(lookCoord).containsSomething()){
+            possibleMoves.push_back(i);
+            numofPosMoves++;
+        }
     }
 }
+void Agent::populateLos(){
 
-/// MOVE
-// update player position
-void Agent::move(int direction[2]){
-    // take in a direction,
-    // return move over to board, possibly as struct
 }
 
+
+/// MOVE
+//void Agent::move(){
+//    lookViewRefTable
+//}
 /// RANDOM MOVE
-void Agent::randomMove(){
+int* Agent::randomMove(){
     // generate a valid random move based off of the line of sight
-    // move();
+    GenerateValidMoves(viewRange);
+    // create move();
+    static int thismove[2];
+    thismove[0] = lookViewRefTable[possibleMoves[(rand() % numofPosMoves)]][0];
+    thismove[1] = lookViewRefTable[possibleMoves[(rand() % numofPosMoves)]][1];
+    return thismove;
 }
 
 
