@@ -1,6 +1,5 @@
 #include "Board.h"
 #include "Agent.h"
-#include "Board.h"
 #include <cstdlib>
 using namespace std;
 
@@ -13,33 +12,22 @@ const int Agent::lookViewRefTable[9][2] =  {{-1,-1,},{0,-1},{1,-1},{-1,0},{0,0},
 // CONSTRUCTOR
 // update spawn, health, and internal reference to board
 Agent::Agent(Board& board):
-internalBoard(board)
+Entity(board)
 {
     health = 10;
     onFlag = true;
-    agentCoord[0] = 0;
-    agentCoord[1] = 0;
+    coord[0] = 0;
+    coord[1] = 0;
     entityChar = "@";
     viewRange = 1;
     numofPosMoves = 0;
 }
 
-
-Agent::Agent(int innitHealth, int spawn[2], Board& board): // maybe get constructor chaining
-    internalBoard(board),
-    health(innitHealth)
-    {
-        setAgentCoord(spawn);
-        entityChar = "@";
-        viewRange = 1;
-        numofPosMoves = 0;
-}
-
 // INTERNAL HELPERS
 // Set Coords
 Agent& Agent::setAgentCoord(int coord[2]){
-    agentCoord[0] = coord[0];
-    agentCoord[1] = coord[1];
+    this->coord[0] = coord[0];
+    this->coord[1] = coord[1];
     return *this;
 }
 
@@ -50,19 +38,35 @@ void Agent::GenerateValidMoves(int viewRange){
     
     int lookCoord[2];
     for (int i = 0; i < 9; i++){ //i*viewRange
-        lookCoord[0] = agentCoord[0] + lookViewRefTable[i][0];
-        lookCoord[1] = agentCoord[1] + lookViewRefTable[i][1];
+        lookCoord[0] = coord[0] + lookViewRefTable[i][0];
+        lookCoord[1] = coord[1] + lookViewRefTable[i][1];
         std::cout << "tile contains " << internalBoard.getTile(lookCoord).containsSomething() << std::endl;
-        if (!internalBoard.getTile(lookCoord).containsSomething()){
+        if (internalBoard.getTile(lookCoord).containsSomething()){
+            if (internalBoard.getTile(lookCoord).containsFood()){
+                possibleMoves.clear();
+                possibleMoves.push_back(i);
+                numofPosMoves++;
+                break;
+            }
+        }
+        else{
             possibleMoves.push_back(i);
             numofPosMoves++;
         }
+        
     }
 }
 
 
 
 /// MOVE
+// update player position
+void Agent::move(int coord[2]){
+    this->coord[0] = coord[0];
+    this->coord[1] = coord[1];
+    // take in a direction,
+    internalBoard.moveAgent(*this, coord);
+}
 
 /// RANDOM MOVE
 int* Agent::randomMove(){
@@ -70,26 +74,24 @@ int* Agent::randomMove(){
     GenerateValidMoves(viewRange);
     // create move();
     static int thismove[2];
-    thismove[0] = agentCoord[0] + lookViewRefTable[possibleMoves[(rand() % numofPosMoves)]][0];
-    thismove[1] = agentCoord[1] + lookViewRefTable[possibleMoves[(rand() % numofPosMoves)]][1];
-    //std::cout << numofPosMoves << thismove[0] << thismove[1] << endl;
-    return thismove;
-}
-
-/// MOVE
-// update player position
-void Agent::move(int coord[2]){
-    agentCoord[0] = coord[0];
-    agentCoord[1] = coord[1];
-    // take in a direction,
-    internalBoard.moveAgent(*this, coord);
+    thismove[0] = lookViewRefTable[5][0];
+    thismove[1] = lookViewRefTable[5][1];
+    if (numofPosMoves < 1){
+        std::cout << "error";
+        return thismove;
+    }
+    else{
+        thismove[0] = coord[0] + lookViewRefTable[possibleMoves[(rand() % numofPosMoves)]][0];
+        thismove[1] = coord[1] + lookViewRefTable[possibleMoves[(rand() % numofPosMoves)]][1];
+        std::cout << numofPosMoves << thismove[0] << thismove[1] << endl;
+        return thismove;
+    }
 }
 
 /// EAT
 void Agent::eat(Food somefood) {
     /// EatinternalBoard grant health proportional to value of Food
     health = somefood.healthgain;
-    return;
 }
 
 /// AGE

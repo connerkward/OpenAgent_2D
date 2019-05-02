@@ -7,8 +7,9 @@
 
 */
 #include "Food.h"
+//#include "Board.h"
 
-Food::Food(){
+Food::Food(Board& board) : Entity(board){
     healthgain = 1;
     entityChar = "$"; // what can I say, its the dough 
     onFlag = true;

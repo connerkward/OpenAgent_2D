@@ -10,47 +10,34 @@
 
 // CONSTRUCTORS
 // populate empty board
-Board::Board(int x, int y, int acount, int fcount) : sizeX(x), sizeY(y), agentCount(acount), foodCount(fcount), obstacleCount(x*y), aManager(acount, *this)
+Board::Board(int x, int y, int acount, int fcount) : sizeX(x), sizeY(y), agentCount(acount), foodCount(fcount), obstacleCount(x*y), aManager(acount, *this), fManager(fcount, *this)
 {
-    aCounter = 0;
-    fCounter = 0;
-    oCounter = 0;
-    
-    
     // Build Board
+    oCounter = 0;
     populateObstacles();
     fillEmptyTiles();
     fillEdgeTiles();
     
-    // Populate Other Entity Pools
-    //populateAgents();
-    populateFoods();
 }
 
 // HELPERS
 // Populators
 void Board::populateObstacles(){
-    Obstacle emptyObstacle;
+    Obstacle emptyObstacle(*this);
     obstacles.resize(sizeY*sizeX, emptyObstacle);
-}
-
-void Board::populateFoods(){
-    Food emptyFood;
-    foods.resize(foodCount, emptyFood);
 }
 
 // populate board with empty tile instances
 void Board::fillEmptyTiles(){
-    Tile emptyTile;
+    Tile emptyTile(*this);
     tiles.resize(sizeY, std::vector<Tile>(sizeX, emptyTile));
 }
-
 // populate border with obstacles from obstacle stack
 void Board::fillEdgeTiles(){
     for(int i=0; i < sizeY; i++){
         for(int j=0; j < sizeX; j++){
             if(i == 0 || j == 0 || i == sizeY-1 || j == sizeX-1){
-                int coords[2] = {i,j};
+                int coords[] = {i,j};
                 //std::cout << "COORDS" << coords[0]; // debug
                 //std::cout << coords[1] << std::endl;// debug
                 spawnObstacle(coords);
@@ -58,7 +45,8 @@ void Board::fillEdgeTiles(){
         }
     }
 }
-// step the board
+
+// STEPS
 void Board::updateBoard(agentMovePackage movePackage){
     std::cout << "number of elems" << movePackage.numberElems << std::endl;
     for(int i=0; i < movePackage.numberElems; i++){
@@ -85,6 +73,7 @@ void Board::updateBoard(agentMovePackage movePackage){
 void Board::step(int steps){
     updateBoard(aManager.getMoves());
 }
+
 // GETTERS
 Tile& Board::getTile(int coords[2]){
     Tile& ptr = tiles[coords[0]][coords[1]];
@@ -93,21 +82,18 @@ Tile& Board::getTile(int coords[2]){
 
 //SPAWNERS
 void Board::spawnAgent(int coords[2]){
-    tiles[coords[0]][coords[1]].updatePointerWith(aManager.spawnAgent(coords));
+    tiles[coords[0]][coords[1]].updatePointerWith(aManager.spawn(coords));
 }
 void Board::spawnFood(int coords[2]){
-    tiles[coords[0]][coords[1]].updatePointerWith(foods[fCounter]);
-    //std::cout << "fcounter:"  << fCounter<< std::endl;
-    fCounter ++;
+    tiles[coords[0]][coords[1]].updatePointerWith(fManager.spawn(coords));
 }
 void Board::spawnObstacle(int coords[2]){
     tiles[coords[0]][coords[1]].updatePointerWith(obstacles[oCounter]);
-    //std::cout << "ocounter:"  << oCounter<< std::endl;
     oCounter ++;
 }
 
 void Board::moveAgent(Agent& agent, int coords[2]){
-    tiles[agent.agentCoord[0]][agent.agentCoord[0]].clearPointer();
+    tiles[agent.coord[0]][agent.coord[0]].clearPointer();
     tiles[coords[0]][coords[1]].updatePointerWith(agent);
 }
 

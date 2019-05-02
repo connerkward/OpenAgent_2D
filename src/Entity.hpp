@@ -10,10 +10,16 @@
 #define Entity_hpp
 
 #include <string>
+class Board;
+
 class Entity{
 public:
-    Entity();
+    Entity(Board& board);
+    Board& internalBoard;
+    bool onFlag; // to flag if agent is active on board, public for now
     std::string entityChar;
+    int coord [2];
+    Entity& setCoord(int coord[2]);
 };
 
 #endif /* Entity_hpp */

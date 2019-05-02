@@ -16,6 +16,7 @@
 #include "Obstacle.h"
 #include "AgentManager.hpp"
 #include "agentMovePackage.hpp"
+#include "FoodManager.hpp"
 
 class Board {
 
@@ -29,7 +30,7 @@ private:
     
     // Object Pools
     AgentManager aManager;
-    std::vector<Food> foods;
+    FoodManager fManager;
     std::vector<Obstacle> obstacles;
     // replace each entity type with managers such that
     // AgentManager<-GameManager->Board
@@ -37,8 +38,6 @@ private:
     // where Board is essentially "TileManager"
     
     // Pool Iteration Helpers
-    int fCounter; // counts are a c++ invention for keeping track of array numbers
-    int aCounter; // until we can find a better way to use vectors like generators
     int oCounter; // this is whats happening
 
     // Object Pool for Tiles
@@ -47,8 +46,6 @@ private:
     // Helpers
     void fillEmptyTiles(); // fills board with empty tiles
     void fillEdgeTiles(); // filles board edges with obstacles
-    void populateFoods(); // populates the food array
-    void populateAgents(); // populates the agent array
     void populateObstacles(); // populates the obstacle array
     void updateBoard(agentMovePackage movePackage);
     
@@ -59,7 +56,7 @@ private:
 public:
     // Constructors
 	Board(); 
-	Board(int x, int y);
+	//Board(int x, int y);
     Board(int x, int y, int acount, int fcount); //for setting agentcount and foodcount
     
     // Spawners

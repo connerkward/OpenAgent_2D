@@ -3,23 +3,27 @@
  an Agent, or both.
  */
 #include "Tile.h"
+//#include "Board.h"
 
 // CONSTRUCTORS
-Tile::Tile(){ // find some way to chain constructors perhaps? instead of my repeat code
+Tile::Tile(Board& board) : Entity(board){ // find some way to chain constructors perhaps? instead of my repeat code
     int coord[] = {0,0};
-    setCoords(coord);
+    setCoord(coord);
     entityChar = "-";
+    ent = nullptr;
 }
-Tile::Tile(int coord[2]){
-    setCoords(coord);
+Tile::Tile(Board& board, int coord[2]) : Entity(board){
+    setCoord(coord);
     entityChar = "-";
+    ent = nullptr;
 }
 
 // SETTERS
 /// Set Tile Coordinate
-void Tile::setCoords(int coord[2]) {
-    Tilex = coord[0];
-    Tiley = coord[1];
+Tile& Tile::setCoord(int coord[2]) {
+    this->coord[0] = coord[0];
+    this->coord[1] = coord[1];
+    return *this;
 }
 
 // Set Pointer
@@ -41,6 +45,20 @@ bool Tile::containsSomething(){
     }
     else{
         return true;
+    }
+}
+
+bool Tile::containsFood(){
+    if(ent != nullptr){
+        if (ent->entityChar == "$"){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    else{
+        return false;
     }
 }
 

@@ -12,7 +12,7 @@
 
 class Obstacle: public Entity {
 public:
-    Obstacle();
+    Obstacle(Board& board);
 };
 
 #endif /* Obstacle_h */

@@ -9,20 +9,20 @@
 #include "AgentManager.hpp"
 
 // CONSTRUCTORS
-AgentManager::AgentManager(int anum , Board &board) : internalBoard(board), agentNumber(anum){
-    populateAgents(agentNumber);
+AgentManager::AgentManager(int n , Board &board) : EntityManager(n,board){
+    populate(n);
 }
 
 
 // PRIVATE HELPERS
-void AgentManager::populateAgents(int anum){
+void AgentManager::populate(int n){
     Agent emptyAgent(internalBoard); // pointer to this instanc of Board
-    agents.resize(anum, emptyAgent);
+    agents.resize(n, emptyAgent);
 }
 
-Agent& AgentManager::findAvailAgent(){
+Agent& AgentManager::findAvail(){
     // iterate through internal agents vector till one finds an avail agent
-    for (int i =0; i < agentNumber; i++){
+    for (int i =0; i < number; i++){
         if (!agents[i].onFlag){
             agents[i].onFlag = true;
             return agents[i];
@@ -30,11 +30,12 @@ Agent& AgentManager::findAvailAgent(){
     }
     return agents[0];
 }
+
 agentMovePackage AgentManager::moveAgents(){ // set paramter to type of move?
     agentMovePackage agentMovestruct;
-    for (int i =0; i < agentNumber; i++){
+    for (int i =0; i < number; i++){
         if (agents[i].onFlag){
-            std::cout << "agent current coord:" << agents[i].agentCoord[0] << agents[i].agentCoord[1] << std::endl;
+            std::cout << "agent current coord:" << agents[i].coord[0] << agents[i].coord[1] << std::endl;
             agentMovestruct.addAgentMovePair(agents[i], agents[i].randomMove());
             
         }
@@ -46,17 +47,17 @@ agentMovePackage AgentManager::moveAgents(){ // set paramter to type of move?
 agentMovePackage AgentManager::getMoves(){
     return moveAgents();
 }
-Agent& AgentManager::spawnAgent(int coords[2]){
-    Agent& agent = findAvailAgent();
+Agent& AgentManager::spawn(int coords[2]){
+    Agent& agent = findAvail();
         std::cout << "spawn at" << coords[0] << "," << coords[1] << std::endl;
     agent.setAgentCoord(coords);
-    std::cout << "agentcoord" << agent.agentCoord[0] << "," << agent.agentCoord[1] << std::endl;
+    std::cout << "agentcoord" << agent.coord[0] << "," << agent.coord[1] << std::endl;
     
     return agent;
 }
-void AgentManager::despawnAgent(Agent& agent){
+void AgentManager::despawn(Agent& agent){
     agent.onFlag = false;
 }
 int* AgentManager::getAgentCoords(Agent& agent){
-    return agent.agentCoord;
+    return agent.coord;
 }
