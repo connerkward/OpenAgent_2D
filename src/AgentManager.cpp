@@ -49,7 +49,7 @@ agentMovePackage AgentManager::getMoves(){
 Agent& AgentManager::spawnAgent(int coords[2]){
     Agent& agent = findAvailAgent();
         std::cout << "spawn at" << coords[0] << "," << coords[1] << std::endl;
-    agent.setAgentCoords(coords);
+    agent.setAgentCoord(coords);
     std::cout << "agentcoord" << agent.agentCoord[0] << "," << agent.agentCoord[1] << std::endl;
     
     return agent;
