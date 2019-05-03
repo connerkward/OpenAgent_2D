@@ -18,8 +18,8 @@ public:
     // Initial Variables
     int health;    
     // Constructors
-    Agent(Board& board);
-    Agent(int innitHealth, int spawncoords[2], Board& board);
+    Agent(Environment& board);
+    Agent(int innitHealth, int spawncoords[2], Environment& board);
     
     // Actions
     void eat(Food someFood);
@@ -27,7 +27,7 @@ public:
     void move(int direction[2]);
     int* randomMove(); // for returning coord array
     
-    Agent& setAgentCoord(int coord[2]);
+    //Agent& setAgentCoord(int coord[2]);
     
 private:
     int numofPosMoves;

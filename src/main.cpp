@@ -1,13 +1,13 @@
-#include "Board.h"
 #include <iostream>
 #include <chrono> // for timer
 #include <thread> // for timer
+#include "Environment.hpp"
 
 // MAP
-int LEGNTH = 50;
-int WIDTH = 50;
+int LEGNTH = 20;
+int WIDTH = 20;
 int AGENTS = 1;
-int FOODS = 1;
+int FOODS = 4;
 // SPAWN
 int agent_spawn[2] =
 {
@@ -19,14 +19,21 @@ int agent_health = 10;
 
 // MAIN
 int main(){
-    Board board(LEGNTH,WIDTH,AGENTS,FOODS);
+    Environment board(LEGNTH,WIDTH,AGENTS,FOODS);
 
     board.spawnAgent(agent_spawn);
-    int vec[2] = {4,4}; // arbitrary point
-    board.spawnFood(vec);
+    int vec[] = {4,4}; // arbitrary point
+//    board.spawnFood(vec);
+//    int vec2[] = {6,6}; // arbitrary point
+//    board.spawnFood(vec2);
+//    int vec3[] = {6,9}; // arbitrary point
+//    board.spawnFood(vec3);
+//    int vec4[] = {15,15}; // arbitrary point
+//    board.spawnObstacle(vec4);
+//    int vec5[] = {6,7}; // arbitrary point
+//    board.spawnObstacle(vec4);
     
     board.print();
-    //board.printUi();
     while(true){
         board.step(1);
         board.print();

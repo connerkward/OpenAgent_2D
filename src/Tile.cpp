@@ -7,13 +7,13 @@
 //#include "Board.h"
 
 // CONSTRUCTORS
-Tile::Tile(Board& board) : Entity(board){ // find some way to chain constructors perhaps? instead of my repeat code
+Tile::Tile(Environment& board) : Entity(board){ // find some way to chain constructors perhaps? instead of my repeat code
     int coord[] = {0,0};
     setCoord(coord);
     entityChar = "-";
     ent = nullptr;
 }
-Tile::Tile(Board& board, int coord[2]) : Entity(board){
+Tile::Tile(Environment& board, int coord[2]) : Entity(board){
     setCoord(coord);
     entityChar = "-";
     ent = nullptr;

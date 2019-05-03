@@ -15,15 +15,15 @@
 #include <vector>
 #include "Entity.hpp"
 
-class Board;
+class Environment;
 
 class Tile: public Entity {
 private:
     Entity* ent; // the magical pointer to everything except my sanity
 
 public:
-    Tile(Board& board);
-    Tile(Board& board, int coord[2]);
+    Tile(Environment& board);
+    Tile(Environment& board, int coord[2]);
     void updatePointerWith(Entity& entToMove); // update pointer (ent) with reference to entity which is to be moved
     void clearPointer(); // update pointer (ent) with reference to entity which is to be moved
     Tile& setCoord(int coord[2]);

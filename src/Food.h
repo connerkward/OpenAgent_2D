@@ -12,7 +12,7 @@
 
 class Food : public Entity {
 public:
-    Food(Board& board);
+    Food(Environment& board);
     int healthgain;
     bool onFlag; // flagged if on Board
 };

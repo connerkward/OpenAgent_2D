@@ -7,9 +7,8 @@
 //
 
 #include "Entity.hpp"
-#include "Board.h"
 
-Entity::Entity(Board& board) : internalBoard(board){
+Entity::Entity(Environment& board) : internalBoard(board){
     entityChar = "-";
 }
 
