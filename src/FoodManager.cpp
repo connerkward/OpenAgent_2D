@@ -7,6 +7,7 @@
 //
 
 #include "FoodManager.hpp"
+#include "src/Food.h"
 #include <iostream>
 
 // CONSTRUCTORS
