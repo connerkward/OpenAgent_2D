@@ -4,3 +4,4 @@
 .vs
 Agent-simulator.xcodeproj
 agent-simulator.xcodeproj
+.DS_Store
