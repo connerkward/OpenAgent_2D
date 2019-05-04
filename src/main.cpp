@@ -1,10 +1,10 @@
 #include <iostream>
-#include <chrono> // for timer
-#include <thread> // for timer
+#include <chrono> 
+#include <thread> 
 #include "Environment.hpp"
 
 // MAP
-int LEGNTH = 20;
+int LENGTH = 20;
 int WIDTH = 20;
 int AGENTS = 1;
 int FOODS = 4;
@@ -12,14 +12,14 @@ int FOODS = 4;
 int agent_spawn[2] =
 {
     (WIDTH)/2,
-    (LEGNTH)/2
+    (LENGTH)/2
 };
 // OTHER
 int agent_health = 10;
 
 // MAIN
-int main(){
-    Environment board(LEGNTH,WIDTH,AGENTS,FOODS);
+int main() {
+    Environment board(LENGTH,WIDTH,AGENTS,FOODS);
 
     board.spawnAgent(agent_spawn);
     int vec[] = {4,4}; // arbitrary point
@@ -34,7 +34,7 @@ int main(){
     board.spawnObstacle(vec4);
     
     board.print();
-    while(true){
+    while (true) {
         board.step(1);
         board.print();
         //std::this_thread::sleep_for (std::chrono::seconds(1));

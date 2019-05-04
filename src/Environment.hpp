@@ -24,7 +24,7 @@ class Environment; // forward declare
 // Populate an pool
 template <class T>
 void populate(int n, Environment& env, std::vector<T> pool){
-    T emptyT(env); // pointer to this instanc of Board
+    T emptyT(env); // pointer to this instance of Board
     emptyT.onFlag = true;
     pool.resize(n, emptyT);
 }
