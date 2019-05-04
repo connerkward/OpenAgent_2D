@@ -1,26 +1,7 @@
 
 Some Notes To Self
 
-DONT CHANGE ANY HEADER FILES
-DEAR GOD
+All is well
 
-FOR ALL THAT IS HOLY
-
-
-
-
-
-
-
-Everything that is printed to the board an Entity
-
-That means Tiles, Obstacles, Agents, Foods, everything else derived from the superclass Entity
-
-Also notice that theres some wacked up sizeX and sizeY situations in certain for loops.
-It works, but it aint pretty.
-
-
-Any functions commented out might be useful and should be completed or left till nessesary
-
-The reason that we gotta send coordinates around as arrays instead of two values is there is no reasona and its entirely more verbose for no real benefit 
+E
 

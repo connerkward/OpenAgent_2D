@@ -16,8 +16,8 @@ class ScentFood;
 
 class Scent : public Entity{
 public:
-    Scent(Environment& board, ScentFood& sf);
-    ScentFood& theFood;
+    Scent(Environment& board);
+    //ScentFood& theFood;
     int distanceToFood;
 };
 

@@ -12,14 +12,14 @@
 #include "Scent.hpp"
 #include <vector>
 
-class Board;
-class Scent;
-
-class ScentFood : public Food{
-public:
-    ScentFood(Environment& board, int s);
-    int stregth;
-    std::vector <Scent> scentArray;
-    void populate(int n);
-};
+//class Board;
+//class Scent;
+//
+//class ScentFood : public Food{
+//public:
+//    ScentFood(Environment& board, int s);
+//    int stregth;
+//    std::vector <Scent> scentArray;
+//    void populate(int n);
+//};
 #endif /* ScentFood_hpp */

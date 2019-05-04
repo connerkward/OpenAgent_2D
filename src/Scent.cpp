@@ -9,7 +9,7 @@
 
 #include "Scent.hpp"
 #include "Tile.h"
-Scent::Scent(Environment& board, ScentFood& sf) : Entity(board), theFood(sf){
-    entityChar = "~";
+Scent::Scent(Environment& board) : Entity(board){
+    entityChar = "-";
     distanceToFood = 1;
 }

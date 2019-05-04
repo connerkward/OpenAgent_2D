@@ -16,21 +16,24 @@ Environment::Environment(int sizeX, int sizeY, int aCount, int fCount):
     tileCount(sizeY*sizeX),
     obstacleCount(sizeY*sizeX)
 {
+    // populate all pools
     Agent emptyT(*this); // pointer to this instanc of Board
     agents.resize(agentCount, emptyT);
     Food emptyf(*this); // pointer to this instanc of Board
     foods.resize(foodCount, emptyf);
     Obstacle emptyO(*this); // pointer to this instanc of Board
     obstacles.resize(obstacleCount, emptyO);
-    Tile emptyTile(*this);
-    tiles.resize(sizeY, std::vector<Tile>(sizeX, emptyTile));
+    populateTiles();
+    
+    // Spawn World to Board
     fillEdgeTiles();
     
 }
 
 // HELPERS
 void Environment::populateTiles(){
-
+    Tile emptyTile(*this);
+    tiles.resize(sizeY, std::vector<Tile>(sizeX, emptyTile));
 }
 
 void Environment::fillEdgeTiles(){
