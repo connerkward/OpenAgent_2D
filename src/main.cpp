@@ -23,15 +23,15 @@ int main(){
 
     board.spawnAgent(agent_spawn);
     int vec[] = {4,4}; // arbitrary point
-//    board.spawnFood(vec);
-//    int vec2[] = {6,6}; // arbitrary point
-//    board.spawnFood(vec2);
-//    int vec3[] = {6,9}; // arbitrary point
-//    board.spawnFood(vec3);
-//    int vec4[] = {15,15}; // arbitrary point
-//    board.spawnObstacle(vec4);
-//    int vec5[] = {6,7}; // arbitrary point
-//    board.spawnObstacle(vec4);
+    board.spawnFood(vec);
+    int vec2[] = {6,6}; // arbitrary point
+    board.spawnFood(vec2);
+    int vec3[] = {6,9}; // arbitrary point
+    board.spawnFood(vec3);
+    int vec4[] = {15,15}; // arbitrary point
+    board.spawnObstacle(vec4);
+    int vec5[] = {6,7}; // arbitrary point
+    board.spawnObstacle(vec4);
     
     board.print();
     while(true){

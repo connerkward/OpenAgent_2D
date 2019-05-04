@@ -25,11 +25,12 @@ class Environment; // forward declare
 template <class T>
 void populate(int n, Environment& env, std::vector<T> pool){
     T emptyT(env); // pointer to this instanc of Board
+    emptyT.onFlag = true;
     pool.resize(n, emptyT);
 }
 
 template <class T>
-T& findAvailinPool(int sizeOfPool, std::vector<T> pool){
+T& findAvailinPool(int sizeOfPool, std::vector<T> &pool){
     // iterate through internal agents vector till one finds an avail agent
     for (int i =0; i < sizeOfPool; i++){
         if (!pool[i].onFlag){
@@ -46,7 +47,7 @@ public:
     // Constructors
     // Obstacle and Tile counts auto generated
     Environment();
-    Environment(int sizeX, int sizeY, int agentCount, int foodCount);
+    Environment(int sizeX, int sizeY, int aCount, int fCount);
     
     // Tile Management
     Tile& getTileAt(int coords[2]);

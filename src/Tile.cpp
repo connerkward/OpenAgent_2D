@@ -12,6 +12,7 @@ Tile::Tile(Environment& board) : Entity(board){ // find some way to chain constr
     setCoord(coord);
     entityChar = "-";
     ent = nullptr;
+    onFlag = true;
 }
 Tile::Tile(Environment& board, int coord[2]) : Entity(board){
     setCoord(coord);

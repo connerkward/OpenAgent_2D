@@ -8,24 +8,29 @@
 
 #include "Environment.hpp"
 
-Environment::Environment(int sizeX, int sizeY, int agentCount, int foodCount):
+Environment::Environment(int sizeX, int sizeY, int aCount, int fCount):
     sizeX(sizeX),
     sizeY(sizeY),
-    agentCount(agentCount),
-    foodCount(foodCount),
-    tileCount(sizeY*sizeX)
+    agentCount(aCount),
+    foodCount(fCount),
+    tileCount(sizeY*sizeX),
+    obstacleCount(sizeY*sizeX)
 {
-    populate(agentCount, *this, agents);
-    populate(foodCount, *this, foods);
-    populate(obstacleCount, *this, obstacles);
-    populateTiles();
+    Agent emptyT(*this); // pointer to this instanc of Board
+    agents.resize(agentCount, emptyT);
+    Food emptyf(*this); // pointer to this instanc of Board
+    foods.resize(foodCount, emptyf);
+    Obstacle emptyO(*this); // pointer to this instanc of Board
+    obstacles.resize(obstacleCount, emptyO);
+    Tile emptyTile(*this);
+    tiles.resize(sizeY, std::vector<Tile>(sizeX, emptyTile));
+    fillEdgeTiles();
     
 }
 
 // HELPERS
 void Environment::populateTiles(){
-    Tile emptyTile(*this);
-    tiles.resize(sizeY, std::vector<Tile>(sizeX, emptyTile));
+
 }
 
 void Environment::fillEdgeTiles(){
@@ -73,8 +78,12 @@ void Environment::spawnObstacle(int coords[2]){
 }
 // SET AGENT POSITION
 void Environment::moveAgent(Agent& agent, int coords[2]){
-    tiles[agent.coord[0]][agent.coord[0]].clearPointer();
+    tiles[agent.coord[0]][agent.coord[1]].clearPointer();
+//    std::cout << "moevd from " << agent.coord[0] << agent.coord[1] << std::endl;
+    agent.setCoord(coords);
     tiles[coords[0]][coords[1]].updatePointerWith(agent);
+//    std::cout << "moevd to" << coords[0] << coords[1] << std::endl;
+
 }
 
 /// PRINTERS

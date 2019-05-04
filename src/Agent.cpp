@@ -1,5 +1,6 @@
 #include "Agent.h"
 #include <cstdlib>
+#include "Environment.hpp"
 using namespace std;
 
 // Look Up Table for Line of Sight
@@ -26,13 +27,13 @@ void Agent::GenerateValidMoves(int viewRange){
     numofPosMoves = 0;
     possibleMoves.clear();
     int lookCoord[2];
-    for (int curRange = 0; curRange < viewRange; curRange++){
+    for (int curRange = 0; curRange <= viewRange; curRange++){
         for (int i = 0; i < 9; i++){
             lookCoord[0] = this->coord[0] + lookViewRefTable[i][0] * curRange;
             lookCoord[1] = this->coord[1] + lookViewRefTable[i][1] * curRange;
             //        std::cout << "tile contains " << internalBoard.getTile(lookCoord).containsSomething() << std::endl;
-            if (internalBoard.getTile(lookCoord).containsSomething()){
-                if (internalBoard.getTile(lookCoord).containsFood()){
+            if (internalBoard.getTileAt(lookCoord).containsSomething()){
+                if (internalBoard.getTileAt(lookCoord).containsFood()){
                     possibleMoves.clear();
                     possibleMoves.push_back(i);
                     numofPosMoves++;
@@ -63,7 +64,9 @@ int* Agent::randomMove(){
     else{
         thismove[0] = coord[0] + lookViewRefTable[possibleMoves[(rand() % numofPosMoves)]][0];
         thismove[1] = coord[1] + lookViewRefTable[possibleMoves[(rand() % numofPosMoves)]][1];
-        std::cout << numofPosMoves << thismove[0] << thismove[1] << endl;
+        std::cout << "possible moves : " << numofPosMoves << std::endl;
+        std::cout << "move from : " << coord[0] << "," << coord[1] << endl;
+        std::cout << "move to : " << thismove[0] << "," << thismove[1] << endl;
         return thismove;
     }
 }

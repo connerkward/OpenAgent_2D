@@ -24,7 +24,6 @@ public:
     // Actions
     void eat(Food someFood);
     bool age();
-    void move(int direction[2]);
     int* randomMove(); // for returning coord array
     
     //Agent& setAgentCoord(int coord[2]);
