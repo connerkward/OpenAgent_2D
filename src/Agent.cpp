@@ -13,11 +13,8 @@ Agent::Agent(Environment& board):
 Entity(board)
 {
     health = 10;
-    onFlag = true;
-    coord[0] = 0;
-    coord[1] = 0;
     entityChar = "@";
-    viewRange = 1;
+    viewRange = 1; // default 
     numofPosMoves = 0;
 }
 
@@ -25,22 +22,23 @@ Entity(board)
 // Find Valid Moves
 void Agent::GenerateValidMoves(int viewRange){
     numofPosMoves = 0;
-    possibleMoves.clear();
+    this->possibleMoves.clear();
     int lookCoord[2];
-    for (int curRange = 0; curRange <= viewRange; curRange++){
+    for (int curRange = 1; curRange <= viewRange; curRange++){
         for (int i = 0; i < 9; i++){
-            lookCoord[0] = this->coord[0] + lookViewRefTable[i][0] * curRange;
-            lookCoord[1] = this->coord[1] + lookViewRefTable[i][1] * curRange;
-            //        std::cout << "tile contains " << internalBoard.getTile(lookCoord).containsSomething() << std::endl;
+            lookCoord[0] = coord[0] + lookViewRefTable[i][0] * curRange;
+            lookCoord[1] = coord[1] + lookViewRefTable[i][1] * curRange;
             if (internalBoard.getTileAt(lookCoord).containsSomething()){
+                // Tile Has Object of Interest, Food
                 if (internalBoard.getTileAt(lookCoord).containsFood()){
+    
                     possibleMoves.clear();
                     possibleMoves.push_back(i);
                     numofPosMoves++;
                     break;
                 }
             }
-            else{
+            else{ // Tile is empty
                 possibleMoves.push_back(i);
                 numofPosMoves++;
             }
@@ -53,27 +51,22 @@ void Agent::GenerateValidMoves(int viewRange){
 int* Agent::randomMove(){
     // generate a valid random move based off of the line of sight
     GenerateValidMoves(viewRange);
-    // create default move();
-    static int thismove[2];
-    thismove[0] = lookViewRefTable[5][0];
-    thismove[1] = lookViewRefTable[5][1];
+    // create default move at  0,0;
+    static int thismove[2] = {0,0};
     if (numofPosMoves < 1){
-        std::cout << "stuck, none possible";
+        // return zero move
         return thismove;
     }
     else{
+        // return random from possible moves array
         thismove[0] = coord[0] + lookViewRefTable[possibleMoves[(rand() % numofPosMoves)]][0];
         thismove[1] = coord[1] + lookViewRefTable[possibleMoves[(rand() % numofPosMoves)]][1];
-        std::cout << "possible moves : " << numofPosMoves << std::endl;
-        std::cout << "move from : " << coord[0] << "," << coord[1] << endl;
-        std::cout << "move to : " << thismove[0] << "," << thismove[1] << endl;
         return thismove;
     }
 }
 
 /// EAT
 void Agent::eat(Food somefood) {
-    /// EatinternalBoard grant health proportional to value of Food
     health = somefood.healthgain;
 }
 

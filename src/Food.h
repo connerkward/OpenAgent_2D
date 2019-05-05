@@ -14,7 +14,6 @@ class Food : public Entity {
 public:
     Food(Environment& board);
     int healthgain;
-    bool onFlag; // flagged if on Board
 };
 
 #endif /* Food_h */

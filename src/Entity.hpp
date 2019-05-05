@@ -19,8 +19,8 @@ public:
     Environment& internalBoard;
     bool onFlag; // to flag if agent is active on board, public for now
     std::string entityChar;
-    int coord [2];
     Entity& setCoord(int coord[2]);
+    int coord [2];
 };
 
 #endif /* Entity_hpp */

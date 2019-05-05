@@ -17,14 +17,11 @@ Environment::Environment(int sizeX, int sizeY, int aCount, int fCount):
     obstacleCount(sizeY*sizeX)
 {
     // populate all pools
-    Agent emptyT(*this); // pointer to this instanc of Board
-    agents.resize(agentCount, emptyT);
-    Food emptyf(*this); // pointer to this instanc of Board
-    foods.resize(foodCount, emptyf);
-    Obstacle emptyO(*this); // pointer to this instanc of Board
-    obstacles.resize(obstacleCount, emptyO);
     populateTiles();
-    
+    obstacles = populate(obstacleCount, *this, obstacles);
+    foods = populate(foodCount, *this, foods);
+    agents = populate(agentCount, *this, agents);
+
     // Spawn World to Board
     fillEdgeTiles();
     
@@ -49,7 +46,7 @@ void Environment::fillEdgeTiles(){
 
 void Environment::step(int steps){
     for(int i =0; i < agentCount; i++){
-        if (agents[i].onFlag){
+        if (agents[i].onFlag == true){
             moveAgent(agents[i], agents[i].randomMove());
             
         }
@@ -65,27 +62,31 @@ Tile& Environment::getTileAt(int coords[2]){
 /// SETTERS
 // SPAWNERS
 void Environment::spawnAgent(int coords[2]){
-    Agent& a = findAvailinPool(agentCount, agents);
+    Agent& a = findAvailinPool(agentCount, agents, *this);
     a.setCoord(coords);
+    a.onFlag = true;
     tiles[coords[0]][coords[1]].updatePointerWith(a);
 }
+
 void Environment::spawnFood(int coords[2]){
-    Food& f = findAvailinPool(foodCount, foods);
+    Food& f = findAvailinPool(foodCount, foods, *this);
     f.setCoord(coords);
+    f.onFlag = true;
+
     tiles[coords[0]][coords[1]].updatePointerWith(f);
 }
 void Environment::spawnObstacle(int coords[2]){
-    Obstacle& o = findAvailinPool(obstacleCount, obstacles);
+    Obstacle& o = findAvailinPool(obstacleCount, obstacles, *this);
+    o.onFlag = true;
     o.setCoord(coords);
     tiles[coords[0]][coords[1]].updatePointerWith(o);
 }
+
 // SET AGENT POSITION
 void Environment::moveAgent(Agent& agent, int coords[2]){
     tiles[agent.coord[0]][agent.coord[1]].clearPointer();
-//    std::cout << "moevd from " << agent.coord[0] << agent.coord[1] << std::endl;
     agent.setCoord(coords);
     tiles[coords[0]][coords[1]].updatePointerWith(agent);
-//    std::cout << "moevd to" << coords[0] << coords[1] << std::endl;
 
 }
 

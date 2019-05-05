@@ -16,29 +16,28 @@
 #include "Tile.h"
 #include <vector>
 
-
 class Environment; // forward declare
 
 // -----------------------TEMPLATES------------------------------
 // Template Functions for manipulating vectors
 // Populate an pool
 template <class T>
-void populate(int n, Environment& env, std::vector<T> pool){
-    T emptyT(env); // pointer to this instanc of Board
-    emptyT.onFlag = true;
-    pool.resize(n, emptyT);
+std::vector<T> populate(int n, Environment& env, std::vector<T> pool){
+    pool.resize(n, T(env));
+    return pool;
 }
 
 template <class T>
-T& findAvailinPool(int sizeOfPool, std::vector<T> &pool){
+T& findAvailinPool(int sizeOfPool, std::vector<T> &pool, Environment& env){
     // iterate through internal agents vector till one finds an avail agent
     for (int i =0; i < sizeOfPool; i++){
-        if (!pool[i].onFlag){
-            pool[i].onFlag = true;
+        if (pool[i].onFlag == false){
             return pool[i];
         }
     }
-    return pool[0];
+    // add new to pool in a pinch
+    pool.push_back(T(env));
+    return pool[sizeOfPool+1];
 }
 
 // --------------------------------CLASS------------------------------
@@ -63,6 +62,8 @@ public:
     void spawnObstacle(int coords[2]);
     void spawnFood(int coords[2]);
     void spawnTile(int coords[2]);
+    Agent& findAvailinPoolAgent();
+//    void spawnSFood(int coords[2]);
     
     // Printers
     void print();
@@ -82,6 +83,7 @@ private:
     std::vector<Agent> agents;
     std::vector<Food> foods;
     std::vector<Obstacle> obstacles;
+//    std::vector<ScentFood> scentFoods;
     
     
     // Helpers

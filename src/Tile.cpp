@@ -8,11 +8,8 @@
 
 // CONSTRUCTORS
 Tile::Tile(Environment& board) : Entity(board){ // find some way to chain constructors perhaps? instead of my repeat code
-    int coord[] = {0,0};
-    setCoord(coord);
     entityChar = "-";
     ent = nullptr;
-    onFlag = true;
 }
 Tile::Tile(Environment& board, int coord[2]) : Entity(board){
     setCoord(coord);
@@ -52,7 +49,7 @@ bool Tile::containsSomething(){
 
 bool Tile::containsFood(){
     if(ent != nullptr){
-        if (ent->entityChar == "$"){
+        if (ent->entityChar == "$" || ent->entityChar == "p"){
             return true;
         }
         else{

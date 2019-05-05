@@ -10,6 +10,9 @@
 
 Entity::Entity(Environment& board) : internalBoard(board){
     entityChar = "-";
+    int coord[] = {0,0};
+    setCoord(coord);
+    onFlag = false;
 }
 
 

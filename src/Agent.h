@@ -18,28 +18,22 @@ public:
     // Initial Variables
     int health;    
     // Constructors
-    Agent(Environment& board);
-    Agent(int innitHealth, int spawncoords[2], Environment& board);
-    
+    Agent(Environment& board);    
     // Actions
     void eat(Food someFood);
     bool age();
-    int* randomMove(); // for returning coord array
-    
-    //Agent& setAgentCoord(int coord[2]);
+    int* move();
+    int* randomMove();
     
 private:
     int numofPosMoves;
     std::vector<int> possibleMoves;
-    //Board& internalBoard;
-    std:: vector<Tile> lineOfSight; // internal "line of sight"
+    std:: vector<Tile> lineOfSight;
     void GenerateValidMoves(int viewRange);
     int viewRange;
     
     // Reference Coords
     const static int lookViewRefTable[9][2];
-
-    // this is that direction reference dictionary we talked about that holds all the possible moves (ie (-1,1), (0,-1) etc) which can be iterated through and also multiplied by for  line of sight 
 };
 
 
