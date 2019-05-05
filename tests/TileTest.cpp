@@ -1,4 +1,4 @@
 #include "catch.hpp"
-#include "Tile.h"
-#include "Agent.h"
-#include "Food.h"
+#include "../src/Tile.h"
+#include "../src/Agent.h"
+#include "../src/Food.h"
