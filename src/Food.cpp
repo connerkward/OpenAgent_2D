@@ -9,7 +9,8 @@
 #include "Food.h"
 //#include "Board.h"
 
-Food::Food(Environment& board) : Entity(board){
+Food::Food(Environment& board, int x = 0, int y = 0) : Entity(board, x, y){
     healthgain = 1;
-    entityChar = "$"; // what can I say, its the dough 
+	entityType = FOOD;
+    entityChar = "$"; 
 }

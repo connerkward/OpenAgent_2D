@@ -4,84 +4,48 @@
  */
 
 #include "Tile.h"
-//#include "Board.h"
 
 // CONSTRUCTORS
-Tile::Tile(Environment& board) : Entity(board){ // find some way to chain constructors perhaps? instead of my repeat code
-    entityChar = "-";
-    ent = nullptr;
-}
-Tile::Tile(Environment& board, int coord[2]) : Entity(board){
-    setCoord(coord);
-    entityChar = "-";
-    ent = nullptr;
+Tile::Tile(int x, int y) {
+	coordinates[0] = x;
+	coordinates[1] = y;
+	entityWithin = nullptr;
 }
 
-// SETTERS
-/// Set Tile Coordinate
-Tile& Tile::setCoord(int coord[2]) {
-    this->coord[0] = coord[0];
-    this->coord[1] = coord[1];
-    return *this;
+bool Tile::placeEntity(Entity& entity) {
+	if (entityWithin != nullptr) {
+		return false;
+	}
+	else {
+		entityWithin = &entity;
+		return true;
+	}
 }
 
-// Set Pointer
-void Tile::updatePointerWith(Entity& entToMove){ // the question of the century
-    //std::cout << "ENTITY" << entityChar << std::endl; // debug
-
-    //entityChar = entToMove.entityChar;
-    ent = &entToMove;
+bool Tile::removeEntity() {
+	entityWithin = nullptr;
+	return true;
 }
 
-void Tile::clearPointer(){
-    entityChar = "-";
-    ent = nullptr;
+bool Tile::occupied() {
+	return entityWithin != nullptr;
 }
 
-bool Tile::containsSomething(){
-    if (ent == nullptr){
-        return false;
-    }
-    else{
-        return true;
-    }
+bool Tile::containsEntity(ENTITY_TYPE entityType) {
+	if (entityWithin != nullptr && entityWithin->entityType == entityType) {
+		return true;
+	}
+	return false;
 }
 
-bool Tile::containsFood(){
-    if(ent != nullptr){
-        if (ent->entityChar == "$" || ent->entityChar == "p"){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-    else{
-        return false;
-    }
-}
-
-
-// GETTERS
-///// Checks if the Hex contains an Agent
-//bool Tile::containsAgent() {
-//    return true;
-//}
-///// Checks if the Hex contains Food
-//bool Tile::containsFood() {
-//    return true;
-//}
-
-// PRINTERS
-std::ostream& operator<<(std::ostream& os, const Tile& thisTile)
-{
-    if (thisTile.ent != nullptr){ // if this tile's pointer is pointing (is not NULL)
-        os << thisTile.ent->entityChar; //print out the char of the object that the pointer points to
+std::ostream& operator << (std::ostream& os, const Tile& thisTile) {
+    if (thisTile.entityWithin != nullptr) { 
+        os << thisTile.entityWithin->entityChar;
         return os;
     }
     else {
-        os << thisTile.entityChar; // otherwise pointer is null and use default existing char
+        os << '-';
         return os;
     }
-
 }
+

@@ -17,31 +17,21 @@
 
 class Environment;
 
-class Tile: public Entity {
+class Tile {
 private:
-    Entity* ent; // the magical pointer to everything except my sanity
+    Entity* entityWithin;
+	int coordinates[2];
 
 public:
-    Tile(Environment& board);
-    Tile(Environment& board, int coord[2]);
-    void updatePointerWith(Entity& entToMove); // update pointer (ent) with reference to entity which is to be moved
-    void clearPointer(); // update pointer (ent) with reference to entity which is to be moved
-    Tile& setCoord(int coord[2]);
+    Tile(int x, int y);
 
-    bool containsSomething();
-    bool containsFood();
-    //bool containsAgent();
-	//bool containsFood();
-    //bool containsObstacle();
+    bool placeEntity(Entity &entity);
+    bool removeEntity(); 
 
-	//bool giveFood(Food& food);
-	//bool giveAgent(Agent& agent);
+    bool occupied();
+	bool containsEntity(ENTITY_TYPE entityType);
 
-
-	//bool operator==(const Tile& otherTile);
-	//bool operator!=(const Tile& otherTile);
-    
-    friend std::ostream& operator<<(std::ostream& os, const Tile& thisTile); // honestly I couldnt tell you how friend works, but it allows Board to simple call cout << Tile
+    friend std::ostream& operator<<(std::ostream& os, const Tile& thisTile);
 };
 
 #endif /* Tile_h */

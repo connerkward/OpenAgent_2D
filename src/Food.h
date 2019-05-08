@@ -12,7 +12,7 @@
 
 class Food : public Entity {
 public:
-    Food(Environment& board);
+    Food(Environment& board, int x, int y);
     int healthgain;
 };
 

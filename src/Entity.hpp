@@ -13,14 +13,25 @@
 
 class Environment;
 
-class Entity{
+const enum ENTITY_TYPE { BLANK, AGENT, FOOD, OBSTACLE };
+
+class Entity {
+private:
+	bool onFlag;
+protected:
+	Environment& viewOfEnvironment;
 public:
-    Entity(Environment& board);
-    Environment& internalBoard;
-    bool onFlag; // to flag if agent is active on board, public for now
-    std::string entityChar;
-    Entity& setCoord(int coord[2]);
-    int coord [2];
+	ENTITY_TYPE entityType;
+	int xLoc;
+	int yLoc;
+	std::string entityChar;
+
+	Entity(Environment& env, int x, int y);
+
+	void changeState();
+	bool isOn();
+
+	friend std::ostream& operator << (std::ostream& os, const Entity& thisEntity);
 };
 
 #endif /* Entity_hpp */

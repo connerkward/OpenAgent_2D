@@ -10,6 +10,7 @@
 
 class Board;
 
-Obstacle::Obstacle(Environment& board) : Entity(board){
+Obstacle::Obstacle(Environment& board, int x = 0, int y = 0) : Entity(board, x, y) {
+	entityType = OBSTACLE;
     entityChar = "*";
 }

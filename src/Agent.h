@@ -13,28 +13,23 @@
 class Board;
 
 class Agent : public Entity {
+private:
+	int numofPosMoves;
+	std::vector<int> possibleMoves;
+	void GenerateValidMoves(int viewRange);
+	int viewRange;
 
+	// Reference Coords
+	const static int lookViewRefTable[9][2];
 public:
-    // Initial Variables
     int health;    
-    // Constructors
-    Agent(Environment& board);    
-    // Actions
+
+    Agent(Environment& board, int x, int y);   
+
     void eat(Food someFood);
     bool age();
     int* move();
     int* randomMove();
-    
-private:
-    int numofPosMoves;
-    std::vector<int> possibleMoves;
-    std:: vector<Tile> lineOfSight;
-    void GenerateValidMoves(int viewRange);
-    int viewRange;
-    
-    // Reference Coords
-    const static int lookViewRefTable[9][2];
 };
-
 
 #endif /* Agent_h */

@@ -16,85 +16,106 @@ Environment::Environment(int sizeX, int sizeY, int aCount, int fCount):
     tileCount(sizeY*sizeX),
     obstacleCount(sizeY*sizeX)
 {
-    // populate all pools
-    populateTiles();
+    createTiles();
     obstacles = populate(obstacleCount, *this, obstacles);
     foods = populate(foodCount, *this, foods);
     agents = populate(agentCount, *this, agents);
-
-    // Spawn World to Board
-    fillEdgeTiles();
-    
+	createBorder();
 }
 
-// HELPERS
-void Environment::populateTiles(){
-    Tile emptyTile(*this);
-    tiles.resize(sizeY, std::vector<Tile>(sizeX, emptyTile));
+void Environment::createTiles() {
+    tiles.reserve(sizeY);
+	for (int i = 0; i < sizeY; i++) {
+		tiles.push_back(std::vector<Tile>());
+		tiles[i].reserve(sizeX);
+		for (int j = 0; j < sizeX; j++) {
+			tiles[i].push_back(Tile(j, i));
+		}
+	}
 }
 
-void Environment::fillEdgeTiles(){
+void Environment::createBorder() {
     for(int i=0; i < sizeY; i++){
-        for(int j=0; j < sizeX; j++){
+        for(int j=0; j < sizeX; j++) {
             if(i == 0 || j == 0 || i == sizeY-1 || j == sizeX-1){
-                int coords[] = {i,j};
-                spawnObstacle(coords);
+                spawnObstacle(j, i);
             }
         }
     }
 }
 
-void Environment::step(int steps){
-    for(int i =0; i < agentCount; i++){
-        if (agents[i].onFlag == true){
-            moveAgent(agents[i], agents[i].randomMove());
-            
-        }
-    }
+bool Environment::step() {
+	if (checkForEndState() == true) {
+		for (int i = 0; i < agentCount; i++) {
+			if (agents[i].isOn()) {
+				moveAgent(agents[i], agents[i].randomMove());
+				agents[i].age();
+				if (agents[i].health == 0) {
+					agents[i].changeState();
+				}
+			}
+		}
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
-// GETTERS
-Tile& Environment::getTileAt(int coords[2]){
-    Tile& ptr = tiles[coords[0]][coords[1]];
+bool Environment::checkForEndState() {
+	for (int i = 0; i < agentCount; i++) {
+		if (agents[i].isOn()) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Environment::isValidLocation(int x, int y) {
+	if (x < 0 || y < 0 || x > sizeX || y > sizeY) {
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
+Tile& Environment::tile(int x, int y){
+    Tile& ptr = tiles[y][x];
     return ptr;
 }
 
-/// SETTERS
-// SPAWNERS
-void Environment::spawnAgent(int coords[2]){
-    Agent& a = findAvailinPool(agentCount, agents, *this);
-    a.setCoord(coords);
-    a.onFlag = true;
-    tiles[coords[0]][coords[1]].updatePointerWith(a);
+void Environment::spawnAgent(int x, int y) {
+    Agent& newAgent = nextAvailableEntity(agentCount, agents, *this);
+	newAgent.xLoc = x, newAgent.yLoc = y;
+	newAgent.changeState();
+    tile(x, y).placeEntity(newAgent);
 }
 
-void Environment::spawnFood(int coords[2]){
-    Food& f = findAvailinPool(foodCount, foods, *this);
-    f.setCoord(coords);
-    f.onFlag = true;
-
-    tiles[coords[0]][coords[1]].updatePointerWith(f);
-}
-void Environment::spawnObstacle(int coords[2]){
-    Obstacle& o = findAvailinPool(obstacleCount, obstacles, *this);
-    o.onFlag = true;
-    o.setCoord(coords);
-    tiles[coords[0]][coords[1]].updatePointerWith(o);
+void Environment::spawnFood(int x, int y) {
+    Food& newFood = nextAvailableEntity(foodCount, foods, *this);
+	newFood.xLoc = x, newFood.yLoc = y;
+	newFood.changeState();
+    tile(x, y).placeEntity(newFood);
 }
 
-// SET AGENT POSITION
-void Environment::moveAgent(Agent& agent, int coords[2]){
-    tiles[agent.coord[0]][agent.coord[1]].clearPointer();
-    agent.setCoord(coords);
-    tiles[coords[0]][coords[1]].updatePointerWith(agent);
-
+void Environment::spawnObstacle(int x, int y) {
+    Obstacle& newObstacle = nextAvailableEntity(obstacleCount, obstacles, *this);
+	newObstacle.xLoc = x, newObstacle.yLoc = y;
+	newObstacle.changeState();
+    tile(x, y).placeEntity(newObstacle);
 }
 
-/// PRINTERS
-void Environment::print(){
-    for(int i=0; i < sizeY; i++){
-        for(int j=0; j < sizeX; j++){
-            std::cout << tiles[i][j];
+void Environment::moveAgent(Agent& agent, int coords[2]) {
+    tile(agent.xLoc, agent.yLoc).removeEntity();
+	agent.xLoc = coords[0], agent.yLoc = coords[1];
+    tiles[coords[0]][coords[1]].placeEntity(agent);
+}
+
+void Environment::print() {
+    for(int i=0; i < sizeY; i++) {
+        for (int j=0; j < sizeX; j++) {
+            std::cout << tile(j, i);
         }
         std::cout << std::endl;
     }
