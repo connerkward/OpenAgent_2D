@@ -65,7 +65,7 @@ public:
 
 	std::vector<Tile> getView(int location[2], int radius);
 
-	void moveAgent(Agent& agent, int destination[2]);
+	void moveAgent(Agent& agent, coord moveTo);
     
     void spawnAgent(int x, int y);
     void spawnObstacle(int x, int y);

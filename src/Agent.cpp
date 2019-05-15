@@ -45,18 +45,22 @@ void Agent::GenerateValidMoves(int viewRange) {
 
 /// MOVE
 /// RANDOM MOVE
-int* Agent::randomMove() {
-    // generate a valid random move based off of the line of sight
+coord Agent::randomMove() {
+    // generate a valid random move based off of the line of sight, populates numofPosMove
     GenerateValidMoves(viewRange);
     // create default move at  0,0;
-    static int thismove[2] = {0,0};
+    coord thisCoord;
+    thisCoord.x = 0;
+    thisCoord.y = 0;
     if (numofPosMoves < 1) {
-        return thismove;
+        // return 0,0 move
+        return thisCoord;
     }
     else {
-        thismove[0] = xLoc + lookViewRefTable[possibleMoves[(rand() % numofPosMoves)]][0];
-        thismove[1] = yLoc + lookViewRefTable[possibleMoves[(rand() % numofPosMoves)]][1];
-        return thismove;
+        // return random move from 9 possible moves
+        thisCoord.x = xLoc + lookViewRefTable[possibleMoves[(rand() % numofPosMoves)]][0];
+        thisCoord.y = yLoc + lookViewRefTable[possibleMoves[(rand() % numofPosMoves)]][1];
+        return thisCoord;
     }
 }
 

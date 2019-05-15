@@ -10,6 +10,11 @@
 #include "Food.h"
 #include <cstdlib>
 
+struct coord{
+    int x;
+    int y;
+};
+
 class Board;
 
 class Agent : public Entity {
@@ -28,8 +33,7 @@ public:
 
     void eat(Food someFood);
     bool age();
-    int* move();
-    int* randomMove();
+    coord randomMove();
 };
 
 #endif /* Agent_h */

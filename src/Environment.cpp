@@ -23,6 +23,7 @@ Environment::Environment(int sizeX, int sizeY, int aCount, int fCount):
 	createBorder();
 }
 
+// INITIALIZERS
 void Environment::createTiles() {
     tiles.reserve(sizeY);
 	for (int i = 0; i < sizeY; i++) {
@@ -44,10 +45,12 @@ void Environment::createBorder() {
     }
 }
 
+/// STEPPER
 bool Environment::step() {
 	if (checkForEndState() == true) {
 		for (int i = 0; i < agentCount; i++) {
 			if (agents[i].isOn()) {
+
 				moveAgent(agents[i], agents[i].randomMove());
 				agents[i].age();
 				if (agents[i].health == 0) {
@@ -61,7 +64,7 @@ bool Environment::step() {
 		return false;
 	}
 }
-
+/// CHECKERS
 bool Environment::checkForEndState() {
 	for (int i = 0; i < agentCount; i++) {
 		if (agents[i].isOn()) {
@@ -80,11 +83,13 @@ bool Environment::isValidLocation(int x, int y) {
 	}
 }
 
+/// GETTERS
 Tile& Environment::tile(int x, int y){
     Tile& ptr = tiles[y][x];
     return ptr;
 }
 
+/// SPAWNERS
 void Environment::spawnAgent(int x, int y) {
     Agent& newAgent = nextAvailableEntity(agentCount, agents, *this);
 	newAgent.xLoc = x, newAgent.yLoc = y;
@@ -106,12 +111,16 @@ void Environment::spawnObstacle(int x, int y) {
     tile(x, y).placeEntity(newObstacle);
 }
 
-void Environment::moveAgent(Agent& agent, int coords[2]) {
-    tile(agent.xLoc, agent.yLoc).removeEntity();
-	agent.xLoc = coords[0], agent.yLoc = coords[1];
-    tiles[coords[0]][coords[1]].placeEntity(agent);
+/// SETTERS
+void Environment::moveAgent(Agent& agent, coord moveTo) {
+//    std::cout << "from" << agent.xLoc << agent.yLoc << std::endl; // save for debug
+//    std::cout << "to" << moveTo.x << moveTo.y << std::endl;
+    tiles[agent.xLoc][agent.yLoc].removeEntity();
+	agent.xLoc = moveTo.x, agent.yLoc = moveTo.y;
+    tiles[moveTo.x][moveTo.y].placeEntity(agent);
 }
 
+///PRINTERS
 void Environment::print() {
     for(int i=0; i < sizeY; i++) {
         for (int j=0; j < sizeX; j++) {
