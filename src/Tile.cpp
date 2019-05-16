@@ -49,3 +49,15 @@ std::ostream& operator << (std::ostream& os, const Tile& thisTile) {
     }
 }
 
+std::string Tile::tostring() {
+    std::string returnstring;
+    if (this->entityWithin != nullptr) {
+        returnstring += this->entityWithin->entityChar;
+        return returnstring;
+    }
+    else {
+        returnstring += '-';
+        return returnstring;
+    }
+}
+

@@ -14,7 +14,7 @@ int agent_spawn[2] =
     (LENGTH) / 2
 };
 
-int agent_health = 10;
+int agent_health = 40; // unused
 
 // MAIN
 int main() {
@@ -25,15 +25,16 @@ int main() {
     board.spawnAgent(vec[0], vec[1]);
 
     int iters = 0;
-    board.print();
+    //std::cout << board.print();
     while (true) {
         bool keepGoing = board.step();
 		if (!keepGoing) {
 			break;
 		}
-        board.print();
+        std::cout << board.toString(); // added string return and kept direct board.print()
+        
         iters++;
-        std::cout << "iterations:" << iters << std::endl;
-        //std::this_thread::sleep_for (std::chrono::seconds(1));
+        //std::cout << "iterations:" << iters << std::endl;
+        std::this_thread::sleep_for (std::chrono::seconds(1));
     }
 }

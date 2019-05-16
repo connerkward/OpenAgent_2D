@@ -32,6 +32,8 @@ public:
 	bool containsEntity(ENTITY_TYPE entityType);
 
     friend std::ostream& operator<<(std::ostream& os, const Tile& thisTile);
+    std::string tostring();
+
 };
 
 #endif /* Tile_h */

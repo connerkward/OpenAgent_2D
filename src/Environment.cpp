@@ -121,10 +121,21 @@ void Environment::moveAgent(Agent& agent, coord moveTo) {
 }
 
 ///PRINTERS
+std::string Environment::toString() {
+    std::string returnstring;
+    for(int i=0; i < sizeY; i++) {
+        for (int j=0; j < sizeX; j++) {
+            returnstring += tiles[i][j].tostring();
+        }
+        returnstring += "\n";
+    }
+    return returnstring;
+}
+    
 void Environment::print() {
     for(int i=0; i < sizeY; i++) {
         for (int j=0; j < sizeX; j++) {
-            std::cout << tile(j, i);
+            std::cout << tile(i,j);
         }
         std::cout << std::endl;
     }

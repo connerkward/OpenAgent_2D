@@ -15,6 +15,7 @@
 #include "Obstacle.h"
 #include "Tile.h"
 #include <vector>
+#include <string>
 
 class Environment;
 
@@ -74,6 +75,7 @@ public:
     Agent& findNextAgent();
 
     void print();
+    std::string toString();
     void printUi();
 };
 
