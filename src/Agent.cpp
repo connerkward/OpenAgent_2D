@@ -65,7 +65,8 @@ std::stack<coord> Agent::pathFind(){
     std::stack<coord> aPath;
     return aPath;
 }
-bool genLineOfSight(){
+bool Agent::genLineOfSight(){
+    // store locally
     return true;
 }
 
