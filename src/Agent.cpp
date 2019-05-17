@@ -3,8 +3,10 @@
 #include "Environment.hpp"
 using namespace std;
 
+/// Reference Vector Table
 const int Agent::lookViewRefTable[9][2] =  {{-1,-1,},{0,-1},{1,-1},{-1,0},{0,0},{1,0},{-1,1},{0,1},{1,1}};
 
+/// CONSTRUCTOR
 Agent::Agent(Environment& board, int x = 0, int y = 0) : Entity(board, x, y) {
 	entityChar = "@";
 	entityType = AGENT;
@@ -12,10 +14,12 @@ Agent::Agent(Environment& board, int x = 0, int y = 0) : Entity(board, x, y) {
     health = 10;
     viewRange = 1;
     numofPosMoves = 0;
+    setGoalLoc(0, 0);
+    onPath = false;
 }
-
 // INTERNAL HELPERS
-// Find Valid Moves
+// Find Valid Moves ---------
+// *************To be Deprecated ******************
 void Agent::GenerateValidMoves(int viewRange) {
     numofPosMoves = 0;
     this->possibleMoves.clear();
@@ -42,12 +46,58 @@ void Agent::GenerateValidMoves(int viewRange) {
         }
     }
 }
+// *******************************
 
-/// MOVE
-/// RANDOM MOVE
+
+// PRIVATE HELPERS
+void Agent::setGoalLoc(int x, int y){
+    goalLoc.x = x;
+    goalLoc.y = y;
+}
+bool Agent::setPath(std::stack<coord> aPath){
+    myPath = aPath;
+    return true;
+}
+
+/// PATHFINDING and LOS
+// Find a path and return it as a stack of moves ie {(-1,1),(0,1),(1,1)....}
+std::stack<coord> Agent::pathFind(){
+    std::stack<coord> aPath;
+    return aPath;
+}
+bool genLineOfSight(){
+    return true;
+}
+
+/// MOVES
+// Step
+coord Agent::step(){ /// will be the only function that environment calls, will age, (env will still check for death and end of environment step)
+    // radius 1 check, go for food
+    if (onPath == true){ // if on a path
+        return moveTowardsGoal();
+    }
+    else { // no path
+        if (genLineOfSight() == false){ // gen LOS, no foods in sight
+            return randomMove();
+        }
+        else { // foods in sight
+            setPath(pathFind()); // a stack of moves (a path), set current path to it
+            onPath = true;
+            return moveTowardsGoal();
+        }
+    }
+}
+
+// MOVE TOWARDS LOCATION
+coord Agent::moveTowardsGoal(){ // assumes there is a goal
+    coord returnCoord = myPath.top();
+    myPath.pop();
+    return returnCoord;
+}
+// RANDOM MOVE IN ONE RADUS
 coord Agent::randomMove() {
     // generate a valid random move based off of the line of sight, populates numofPosMove
-    GenerateValidMoves(viewRange);
+    GenerateValidMoves(viewRange); // will eventually be replaced by LOS *****************
     // create default move at  0,0;
     coord thisCoord;
     thisCoord.x = 0;
@@ -64,6 +114,7 @@ coord Agent::randomMove() {
     }
 }
 
+/// EAT
 void Agent::eat(Food food) {
     health = food.healthgain;
 }

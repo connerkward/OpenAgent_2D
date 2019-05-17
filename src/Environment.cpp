@@ -51,7 +51,7 @@ bool Environment::step() {
 		for (int i = 0; i < agentCount; i++) {
 			if (agents[i].isOn()) {
 
-				moveAgent(agents[i], agents[i].randomMove());
+				moveAgent(agents[i], agents[i].step());
 				agents[i].age();
 				if (agents[i].health == 0) {
 					agents[i].changeState();
