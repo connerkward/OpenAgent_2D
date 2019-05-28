@@ -62,11 +62,16 @@ bool Agent::setPath(std::stack<coord> aPath){
 /// PATHFINDING and LOS
 // Find a path and return it as a stack of moves ie {(-1,1),(0,1),(1,1)....}
 std::stack<coord> Agent::pathFind(){
+    // search line of sight data structure,
+        //sort paths by value and heuristic
+        //sort paths by value and heuristic
     std::stack<coord> aPath;
+    // populate aPath with best path
     return aPath;
 }
 bool Agent::genLineOfSight(){
-    // store locally
+    // store LOS locally
+    // returns a boolean if a goal is in sight
     return true;
 }
 
@@ -96,6 +101,7 @@ coord Agent::moveTowardsGoal(){ // assumes there is a goal
     return returnCoord;
 }
 // RANDOM MOVE IN ONE RADUS
+// to be deprecated
 coord Agent::randomMove() {
     // generate a valid random move based off of the line of sight, populates numofPosMove
     GenerateValidMoves(viewRange); // will eventually be replaced by LOS *****************

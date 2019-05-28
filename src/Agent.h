@@ -41,7 +41,7 @@ private:
     
     std::stack<coord> pathFind();
     bool genLineOfSight(); /// on you buddy boy
-    std::stack<coord> goalStack;
+    std::vector<coord> lineOfSight;
 
 public:
     int health;
