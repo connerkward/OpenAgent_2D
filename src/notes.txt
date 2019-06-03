@@ -7,5 +7,5 @@ All is well
 Header Only
 https://github.com/captainhead/PerlinNoiseCpp
 
-Easier and More Complete
+Easier and More Complete <- current
 https://github.com/Reputeless/PerlinNoise
