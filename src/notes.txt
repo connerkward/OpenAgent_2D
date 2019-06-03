@@ -3,3 +3,9 @@ Some Notes To Self
 
 All is well
 
+
+Header Only
+https://github.com/captainhead/PerlinNoiseCpp
+
+Easier and More Complete
+https://github.com/Reputeless/PerlinNoise

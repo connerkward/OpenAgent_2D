@@ -92,21 +92,21 @@ Tile& Environment::tile(int x, int y){
 /// SPAWNERS
 void Environment::spawnAgent(int x, int y) {
     Agent& newAgent = nextAvailableEntity(agentCount, agents, *this);
-	newAgent.xLoc = x, newAgent.yLoc = y;
+	newAgent.xLoc = x , newAgent.yLoc = y;
 	newAgent.changeState();
     tile(x, y).placeEntity(newAgent);
 }
 
 void Environment::spawnFood(int x, int y) {
     Food& newFood = nextAvailableEntity(foodCount, foods, *this);
-	newFood.xLoc = x, newFood.yLoc = y;
+	newFood.xLoc = x , newFood.yLoc = y;
 	newFood.changeState();
     tile(x, y).placeEntity(newFood);
 }
 
 void Environment::spawnObstacle(int x, int y) {
     Obstacle& newObstacle = nextAvailableEntity(obstacleCount, obstacles, *this);
-	newObstacle.xLoc = x, newObstacle.yLoc = y;
+	newObstacle.xLoc = x , newObstacle.yLoc = y;
 	newObstacle.changeState();
     tile(x, y).placeEntity(newObstacle);
 }
@@ -116,7 +116,7 @@ void Environment::moveAgent(Agent& agent, coord moveTo) {
 //    std::cout << "from" << agent.xLoc << agent.yLoc << std::endl; // save for debug
 //    std::cout << "to" << moveTo.x << moveTo.y << std::endl;
     tiles[agent.xLoc][agent.yLoc].removeEntity();
-	agent.xLoc = moveTo.x, agent.yLoc = moveTo.y;
+	agent.xLoc = moveTo.x , agent.yLoc = moveTo.y;
     tiles[moveTo.x][moveTo.y].placeEntity(agent);
 }
 
