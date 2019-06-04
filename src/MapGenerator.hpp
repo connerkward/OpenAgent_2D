@@ -8,11 +8,19 @@
 
 #ifndef MapGenerator_hpp
 #define MapGenerator_hpp
-
+#include "PerlinNoiseCpp-master/Perlin.h"
+#include "PerlinNoiseCpp-master/FractalNoise.h"
 #include <stdio.h>
+#include <vector>
+#include <iostream>
+#include <fstream>
+#include <string>
+
+
 
 class MapGenerator{
-    MapGenerator(int sizeX, int sizeY, int goalFrequency, int obsFrequency, int agentFrequency);
+public:
+    MapGenerator();
     
     
 };
