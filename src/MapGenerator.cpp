@@ -10,10 +10,11 @@
 
 MapGenerator::MapGenerator(){
     // generate grid based on input
-    const static int width = 100;
-    const static int height = 100;
+    const static int width = 30;
+    const static int height = 60;
     const static float freq = (width*height)/(width+height)/10;
     std::cout << freq << std::endl;
+    const static float obstacleThreshold = -0.1;
     
     // Initialize noise generator
     FractalNoise noiseMaker;
@@ -32,8 +33,10 @@ MapGenerator::MapGenerator(){
 
     std::ofstream myfile;
     //myfile.open("map2.txt");
-    myfile.open("a.txt",std::fstream::in | std::fstream::out | std::fstream::trunc);
-
+    myfile.open("map2.txt");
+    
+    srand((unsigned)time(0));
+    
     for (int x=0; x<width; ++x){
         for (int y=0; y<height; ++y) {
             if(x == 0 || y == 0 || y == height-1 || x == width-1){
@@ -42,17 +45,21 @@ MapGenerator::MapGenerator(){
             }
             else{
                 noiseArray[y*width + x] = noiseMaker.noise(float(x)*invWidth, float(y)*invHeight, 0.72);
-                if (noiseArray[y*width + x] > 0){
-                    if (noiseArray[y*width + x] > 0.01 && noiseArray[y*width + x] < 0.09){
-                        //std::cout << "&";
-                        myfile << "&";
-                    }
-                    else{
-                        //std::cout << "-";
-                        myfile << "-";
-                    }
-                        
-                    
+                std::cout << noiseArray[y*width + x] << std::endl;
+
+               if (noiseArray[y*width + x] > obstacleThreshold){
+                   if (rand() % 100 + 1 > 99){
+                       myfile << "&";
+                       //std::cout << "&";
+                   }
+                   else if (rand() % 100 + 1 > 99){
+                       myfile << "@";
+                       //std::cout << "&";
+                   }
+                   else{
+                       myfile << "-";
+                   }
+                   
                 }
                 else{
                     //std::cout << "*";
@@ -62,9 +69,8 @@ MapGenerator::MapGenerator(){
             }
         }
         //std::cout << std::endl;
-        myfile << "/n";
+        myfile << "\n";
     }
-
     myfile.close();
 
     // straight lines such as walls may need a different or variant algo
