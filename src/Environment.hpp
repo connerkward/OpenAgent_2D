@@ -53,10 +53,13 @@ private:
 
 	void createTiles();
 	void createBorder();
+    void TilesFromString(std::istringstream map);
+
 
 public:
     Environment();
     Environment(int sizeX, int sizeY, int numAgents, int numFood);
+    
     
     Tile& tile(int x, int y);
     
