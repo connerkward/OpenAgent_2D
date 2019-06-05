@@ -55,6 +55,7 @@ private:
 	void createBorder();
 
 public:
+    Environment();
     Environment(int sizeX, int sizeY, int numAgents, int numFood);
     
     Tile& tile(int x, int y);

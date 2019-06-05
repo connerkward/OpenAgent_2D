@@ -16,6 +16,14 @@ struct coord{
     int y;
 };
 
+struct ViewTile{
+    int x;
+    int y;
+    bool beenVisited;
+    
+    
+};
+
 class Board;
 
 class Agent : public Entity {
@@ -38,10 +46,12 @@ private:
     bool setPath(std::stack<coord> aPath); // like i said, hypocrite
     std::stack<coord> myPath;
     
+    std::vector<std::vector<ViewTile>> internalView;
     
     std::stack<coord> pathFind();
     bool genLineOfSight(); /// on you buddy boy
     std::vector<coord> lineOfSight;
+    
 
 public:
     int health;
@@ -49,6 +59,7 @@ public:
     void eat(Food someFood);
     bool age();
     coord step();
+    
 };
 
 #endif /* Agent_h */
