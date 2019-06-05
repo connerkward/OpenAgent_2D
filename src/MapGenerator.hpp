@@ -24,7 +24,7 @@
 class MapGenerator{
 public:
     MapGenerator();
-    
+    std::string generate();
     
 };
 #endif /* MapGenerator_hpp */

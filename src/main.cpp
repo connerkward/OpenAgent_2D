@@ -20,6 +20,7 @@ int agent_health = 40; // unused
 // MAIN
 int main() {
     MapGenerator mapgen;
+    mapgen.generate();
     //myfile.open("map2.txt");
 
 //    Environment board(LENGTH, WIDTH, AGENTS, FOODS);
