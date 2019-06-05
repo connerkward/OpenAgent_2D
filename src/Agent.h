@@ -11,6 +11,10 @@
 #include <cstdlib>
 #include <stack>
 
+class Environment;
+class Tile;
+
+
 struct coord{
     int x;
     int y;
@@ -20,15 +24,15 @@ struct ViewTile{
     int x;
     int y;
     bool beenVisited;
-    
-    
+    ENTITY_TYPE entitytype;
+    Tile& tileRef;
 };
-
-class Board;
 
 class Agent : public Entity {
 private:
     const static int lookViewRefTable[9][2];
+    
+    const Environment& boardRef;
 
     coord randomMove();
     coord moveTowardsGoal();

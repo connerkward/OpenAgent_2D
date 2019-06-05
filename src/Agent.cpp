@@ -7,7 +7,7 @@ using namespace std;
 const int Agent::lookViewRefTable[9][2] =  {{-1,-1,},{0,-1},{1,-1},{-1,0},{0,0},{1,0},{-1,1},{0,1},{1,1}};
 
 /// CONSTRUCTOR
-Agent::Agent(Environment& board, int x = 0, int y = 0) : Entity(board, x, y) {
+Agent::Agent(Environment& board, int x = 0, int y = 0) : boardRef(board), Entity(board, x, y) {
 	entityChar = "@";
 	entityType = AGENT;
 
@@ -70,7 +70,15 @@ std::stack<coord> Agent::pathFind(){
     return aPath;
 }
 bool Agent::genLineOfSight(){
-    // store LOS locally
+    // bresanham raycast
+    // for elements in ray array
+    for (int i = 0; i < 9; i++){
+        for (int j = 0; j < 9; j++){
+            internalView[i][j].x = i; // update internal view
+            internalView[i][j].y = j; // update internal view
+            internalView[i][j].tileRef = boardRef.tile(i, j); //hold reference to tile
+        }
+    }
     // returns a boolean if a goal is in sight
     return true;
 }
