@@ -32,7 +32,7 @@ class Agent : public Entity {
 private:
     const static int lookViewRefTable[9][2];
     
-    const Environment& boardRef;
+    Environment& boardRef;
 
     coord randomMove();
     coord moveTowardsGoal();
