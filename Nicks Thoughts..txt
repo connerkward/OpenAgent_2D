@@ -1,0 +1,43 @@
+// we may need more data tan just @ defined as entity, because as a step executes, 
+// in my understanding one entity will move at a time to prevent weirdness such as two entities moving onto the same space
+
+// my idea is that the program scans the array for the next entity that has not moved, which means
+// having each entity with a unique identifier and boolean value i.e. while (true) {bool enitity21hasmoved}  
+// ensuring no entity gets extra moves. The alternative is scanning the array sequentially for spaces
+// contianing enties, but in the case that an entity moves to the next scanned position of the array, without a boolean
+// attached to the has moved condition, this could allow multiple moves.
+// End each step with all bool entity#hasmoved redefined false and print/ save map step
+
+// TODO
+//Add fstream library
+
+//assign entities int values so all int values are associated with entity#
+
+//create bool entity#hasmoved for each entity
+
+//entities can move #tiles in a single step. Probably shouldn't be larger than say 4-5 just b/c readabilty of ouput
+
+//Use perlin noise to write 'map.dat' file holding a matrix with char value representing all entities
+//Matrix should have at least two digits of values at each pointer, 3 would be better
+
+//program opens 'map.dat' and executes one step, saves 't1-run1.dat', executes second step, saves 't2-run1.dat', until a predetermined number of steps have been completed
+
+//create file that is a log of certain entity interactions used to determine its behavioral success (int foodconsumed, int deathage, etc.)
+// these values are saved along with the ruleset specific to that entity (This is so eventually, when we have multiple types of entities we, and the program, can compare them.)
+
+
+//thinner barriers c++ (maybe more specific values manifest as barriers, but if ADJJACENT to another barrier more values will
+//become barriers
+
+// two types of entities with different properties
+
+// EVENTUAL FUNCTIONALIY or tell me we what we are actually going to be doing
+
+//evolution code: after each run, the code has a protocol by which it randomly changes behavior and/ or properties of the
+// entities. Maybe a certain number of points are allocated to # of spaces that can move each round, 
+// health, size, speed of burning through food, attack values, whatever you can think
+//these are randomly distributed 
+//using data analysis the program looks at the change that was made to stats, and observes 
+//the positive or negate change to mean death age/ food consumed and weights future changes to said behavior accordingly
+// reproduction? 
+
