@@ -79,7 +79,7 @@ public:
     Agent& findNextAgent();
 
     void print();
-    std::string toString();
+    std::string toString(); 
     void printUi();
 };
 
