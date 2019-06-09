@@ -91,20 +91,24 @@ public:
 };
 
 
-//  ifstrean infile;
-//  infile open (filename.txt)
-// // this was written in main in the online example
 
-//  while(k<50){
-//  ifstream myfile("file_no_" + std::to_string(k) + ".vtk");
-//  // myfile << "data to write\n";
-//  k++;
-//  }
+/// ----CONNER COMMENT-------
+// Everything in your code below is implementation, so should be in the .cpp file. You can make edits to main to test, just comment out what is already there. For example (pseudocode)
+//main{
+//    string filename = "map.txt";
+//    Envinroment env(filename); // nick's alternate constructor
+//    env.print(); // to check
+//}
+// If look above ^ inside this header file we are in, insert your constructor underneath
+//     Environment();
+//     Environment(int sizeX, int sizeY, int numAgents, int numFood);
+//     here, line 68 or so
+
+// besides some c++ specific syntax, which i dont fault you for, looks good
+//// ----END CONNER COMMENT------
 
 
-//below lines written by hacking together the above two comment blocks
-
-while (k < 50) {
+while (k < 50) { // Con: is 50 an arbitrary test number of steps?
 	ifstream infile;
 	infile open("map" + std::to_string(k) + ".txt");
 
@@ -122,7 +126,9 @@ using namespace std;
 // Function that return count of the given  
 // character in the string 
 
-int count(string s, char c)
+int countEntity(string s, char c) // put this implementation inside environment.cpp
+    // header should include only
+    //int countEntity(string inputString, sometype typeofentity)
 {
 	// Count variable 
 	int res = 0;
@@ -135,7 +141,7 @@ int count(string s, char c)
 
 	return res;
 }
-//Driver code: 
+//Driver code:
 string str = infile open("map" + std::to_string(k) + ".txt");
 char c = '@';
 cout << count(str, c) << endl;
