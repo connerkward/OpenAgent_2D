@@ -6,21 +6,18 @@
 //  Copyright © 2019 Conner K Ward. All rights reserved.
 //
 
-//I believe this class definition is correct but possibly not
 #ifndef Environment_hpp
 #define Environment_hpp
 
-#include <stdio.h>
-#include "Food.h"
-#include "Agent.h"
-#include "Obstacle.h"
+#include "../entities/Food.h"
+#include "../entities/Obstacle.h"
+#include "../entities/agents/Agent.h"
 #include "Tile.h"
 #include <vector>
 #include <string>
-//Below #inlude added for fstream read from file functionality
+#include <stdio.h>
 #include <iostream>
 #include <fstream>
-#include <string>
 
 class Environment;
 
@@ -43,26 +40,32 @@ T& nextAvailableEntity(int entityCount, std::vector<T> &entityPool, Environment&
 
 class Environment {
 private:
-	const int sizeX;
-	const int sizeY;
-	
-
+	const int tileCount;
 	const int agentCount;
 	int foodCount;
 	int obstacleCount;
-	const int tileCount;
-
+	
 	std::vector<std::vector<Tile>> tiles;
 	std::vector<Agent> agents;
 	std::vector<Food> foods;
 	std::vector<Obstacle> obstacles;
 
+	// Constructor utilities
 	void createTiles();
 	void createBorder();
-    void TilesFromString(std::istringstream map);
+    
+	// General utilities
+	int distance(const Tile& t1, const Tile& t2);
+	bool checkForEndState();
+	bool isValidLocation(int x, int y);
 
+	// Printing utilities
+	void tilesFromString(std::istringstream map);
 
 public:
+	const int sizeX;
+	const int sizeY;
+
     Environment();
     Environment(int sizeX, int sizeY, int numAgents, int numFood);
     
@@ -71,10 +74,9 @@ public:
     
     bool step();
 
-	bool checkForEndState();
-	bool isValidLocation(int x, int y);
+	
 
-	std::vector<Tile> getView(int location[2], int radius);
+	std::vector<Tile> getView(Agent& agent, int radius);
 
 	void moveAgent(Agent& agent, coord moveTo);
     

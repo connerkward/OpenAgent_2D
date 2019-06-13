@@ -5,3 +5,8 @@
 Agent-simulator.xcodeproj
 agent-simulator.xcodeproj
 .DS_Store
+agent-simulator.sln
+agent-simulator.vcxproj
+agent-simulator.vcxproj.filters
+agent-simulator.vcxproj.user
+Debug/

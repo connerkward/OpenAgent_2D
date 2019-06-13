@@ -23,8 +23,6 @@ Environment::Environment(int sizeX, int sizeY, int aCount, int fCount):
 	createBorder();
 }
 
-// INITIALIZERS
-
 void Environment::createTiles() {
     tiles.reserve(sizeY);
 	for (int i = 0; i < sizeY; i++) {
@@ -46,7 +44,6 @@ void Environment::createBorder() {
     }
 }
 
-/// STEPPER
 bool Environment::step() {
 	if (checkForEndState() == true) {
 		for (int i = 0; i < agentCount; i++) {
@@ -65,7 +62,11 @@ bool Environment::step() {
 		return false;
 	}
 }
-/// CHECKERS
+
+int distance(const Tile& t1, const Tile& t2) {
+	return abs(t1.xPos - t2.xPos) + abs(t1.yPos - t2.yPos);
+}
+
 bool Environment::checkForEndState() {
 	for (int i = 0; i < agentCount; i++) {
 		if (agents[i].isOn()) {
@@ -84,18 +85,20 @@ bool Environment::isValidLocation(int x, int y) {
 	}
 }
 
-/// GETTERS
 Tile& Environment::tile(int x, int y){
     Tile& ptr = tiles[y][x];
     return ptr;
 }
 
-/// SPAWNERS
 void Environment::spawnAgent(int x, int y) {
     Agent& newAgent = nextAvailableEntity(agentCount, agents, *this);
 	newAgent.xLoc = x , newAgent.yLoc = y;
 	newAgent.changeState();
     tile(x, y).placeEntity(newAgent);
+}
+
+std::vector<Tile> getView(Agent& agent, int radius) {
+	
 }
 
 void Environment::spawnFood(int x, int y) {

@@ -1,12 +1,8 @@
 #include "Agent.h"
 #include <cstdlib>
-#include "Environment.hpp"
+
 using namespace std;
 
-/// Reference Vector Table
-const int Agent::lookViewRefTable[9][2] =  {{-1,-1,},{0,-1},{1,-1},{-1,0},{0,0},{1,0},{-1,1},{0,1},{1,1}};
-
-/// CONSTRUCTOR
 Agent::Agent(Environment& board, int x = 0, int y = 0) : boardRef(board), Entity(board, x, y) {
 	entityChar = "@";
 	entityType = AGENT;

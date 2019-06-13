@@ -13,23 +13,23 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Entity.hpp"
+#include "../entities/Entity.hpp"
 
 class Environment;
 
 class Tile {
 private:
-    Entity* entityWithin;
-	int coordinates[2];
+    Entity* entity;
 
 public:
+	const int xPos;
+	const int yPos;
+
     Tile(int x, int y);
 
-    bool placeEntity(Entity &entity);
-    bool removeEntity(); 
-
-    bool occupied();
-	bool containsEntity(ENTITY_TYPE entityType);
+    void placeEntity(Entity& newEntity);
+    void removeEntity(); 
+	ENTITY_TYPE getEntityType();
 
     friend std::ostream& operator<<(std::ostream& os, const Tile& thisTile);
     std::string tostring();
