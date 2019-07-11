@@ -1,9 +1,12 @@
 //
-//  MapGenerator.hpp
-//  src
+//  MapGenerator.cpp
+//
+//  Map Generator generates maps from Perlin-like noise library and creates a text file with the map data.
+//  It also exports a string version, which can be function chained into an Environment constructor.
+//
 //
 //  Created by Conner K Ward on 5/28/19.
-//  Copyright © 2019 Conner K Ward. All rights reserved.
+//  Star Gods Dev Team
 //
 
 #ifndef MapGenerator_hpp

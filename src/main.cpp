@@ -4,27 +4,62 @@
 #include "Environment.hpp"
 #include "MapGenerator.hpp"
 
+// CONSTANTS (to be defaulted unless user input)
 int LENGTH =20;
 int WIDTH = 20;
 int AGENTS = 2;
 int FOODS = 4;
-// SPAWN
-int agent_spawn[2] =
-{
-    (WIDTH) / 2,
-    (LENGTH) / 2
-};
-
-int agent_health = 40; // unused
 
 // MAIN
 int main() {
-    MapGenerator mapgen;
-    for (int i =0; i < 10; i++){
-        std::string str = "map" + std::to_string(i) + ".txt";
-        std::cout << mapgen.generate(str) << std::endl;
-    }
-    //myfile.open("map2.txt");
+    
+    /// FLOW
+    // GET USER INPUT (If any)
+    // GENERATE MAP FROM PARAMETERS
+    // CREATE ENVIRONMENT OBJECT FROM MAP
+    // STEP ENVIRONMENT (Until Stop-Flag is raised)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/// --------Everything left below is only for reference-------
+
+// SPAWN LOCATION (to be deprecated)
+//int agent_spawn[2] =
+//{
+//    (WIDTH) / 2,
+//    (LENGTH) / 2
+//};
+//
+//// only for debuging purposes, (to be deprecated)
+//int agent_health = 40; // unused
+
+//    MapGenerator mapgen;
+//    for (int i =0; i < 10; i++){
+//        std::string str = "map" + std::to_string(i) + ".txt";
+//        std::cout << mapgen.generate(str) << std::endl;
+//    }
+//myfile.open("map2.txt");
 
 //    Environment board(LENGTH, WIDTH, AGENTS, FOODS);
 //    board.spawnAgent(agent_spawn[0], agent_spawn[1]);
@@ -45,4 +80,3 @@ int main() {
 //        //std::cout << "iterations:" << iters << std::endl;
 //        std::this_thread::sleep_for (std::chrono::seconds(1));
 //    }
-}

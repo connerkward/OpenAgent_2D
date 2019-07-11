@@ -1,9 +1,11 @@
 //
 //  Obstacle.h
-//  src
+//
+//  Obstacle is an entity object that has an connected environement, and an internal set of coords.
+//  The internal coords may be deprecated.
 //
 //  Created by Conner K Ward on 4/17/19.
-//  Copyright © 2019 Conner K Ward. All rights reserved.
+//  Star Gods Dev Team
 //
 
 #ifndef Obstacle_h

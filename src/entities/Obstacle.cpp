@@ -1,9 +1,12 @@
 //
-//  Obstacle.cpp
-//  agent-simulator
+//  Obstacle.h
 //
-
-///TODO Obstacle as Wall
+//  Obstacle is an entity object that has an connected environement, and an internal set of coords.
+//  The internal coords may be deprecated.
+//
+//  Created by Conner K Ward on 4/17/19.
+//  Star Gods Dev Team
+//
 
 #include "Obstacle.h"
 //#include "Board.h"
