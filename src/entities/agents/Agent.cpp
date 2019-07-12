@@ -7,7 +7,7 @@ Agent::Agent(Environment& board, int x = 0, int y = 0) : boardRef(board), Entity
 	entityChar = "@";
 	entityType = AGENT;
 
-    health = 10;
+    health = 10 ;
     viewRange = 1;
     numofPosMoves = 0;
     setGoalLoc(0, 0);
