@@ -18,6 +18,11 @@
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
+<<<<<<< HEAD:src/environments/Environment.hpp
+=======
+#include <string>
+#include <sstring> // For variable filename input to read map1.txt, map2.txt etc
+>>>>>>> parent of c3f0f61... map generator update:src/Environment.hpp
 
 class Environment;
 
@@ -109,44 +114,44 @@ public:
 //// ----END CONNER COMMENT------
 
 
-//while (k < 50) { // Con: is 50 an arbitrary test number of steps?
-//    ifstream infile;
-//    infile open("map" + std::to_string(k) + ".txt");
-//
-//    //k is number of map runs used, SHOULD BE ADJUSTED to desired number of runs
-//    if (infile.fail()) {
-//        cerr << "error opening map file" << end1;
-//        exit(1);
-//    }
-//    k++;
-//    // how does this reference external step functions? Is this appropriate place or should step function happen elsewhere in code?
-//}
-//
-//using namespace std;
-//
-//// Function that return count of the given  
-//// character in the string 
-//
-//int countEntity(string s, char c) // put this implementation inside environment.cpp
-//    // header should include only
-//    //int countEntity(string inputString, sometype typeofentity)
-//{
-//    // Count variable 
-//    int res = 0;
-//
-//    for (int i = 0; i < s.length(); i++)
-//
-//        // checking character in string 
-//        if (s[i] == c)
-//            res++;
-//
-//    return res;
-//}
+while (k < 50) { // Con: is 50 an arbitrary test number of steps?
+	ifstream infile;
+	infile open("map" + std::to_string(k) + ".txt");
+
+	//k is number of map runs used, SHOULD BE ADJUSTED to desired number of runs
+	if (infile.fail()) {
+		cerr << "error opening map file" << end1;
+		exit(1);
+	}
+	k++;
+	// how does this reference external step functions? Is this appropriate place or should step function happen elsewhere in code?
+}
+
+using namespace std;
+
+// Function that return count of the given  
+// character in the string 
+
+int countEntity(string s, char c) // put this implementation inside environment.cpp
+    // header should include only
+    //int countEntity(string inputString, sometype typeofentity)
+{
+	// Count variable 
+	int res = 0;
+
+	for (int i = 0; i < s.length(); i++)
+
+		// checking character in string 
+		if (s[i] == c)
+			res++;
+
+	return res;
+}
 //Driver code:
-//string str = infile open("map" + std::to_string(k) + ".txt");
-//char c = '@';
-//cout << count(str, c) << endl;
-//return 0;
+string str = infile open("map" + std::to_string(k) + ".txt");
+char c = '@';
+cout << count(str, c) << endl;
+return 0;
 
 
 

@@ -12,6 +12,7 @@ int FOODS = 4;
 
 // MAIN
 int main() {
+<<<<<<< HEAD
     
     /// FLOW
     // GET USER INPUT (If any)
@@ -60,6 +61,11 @@ int main() {
 //        std::cout << mapgen.generate(str) << std::endl;
 //    }
 //myfile.open("map2.txt");
+=======
+    MapGenerator mapgen;
+    mapgen.generate();
+    //myfile.open("map2.txt");
+>>>>>>> parent of c3f0f61... map generator update
 
 //    Environment board(LENGTH, WIDTH, AGENTS, FOODS);
 //    board.spawnAgent(agent_spawn[0], agent_spawn[1]);

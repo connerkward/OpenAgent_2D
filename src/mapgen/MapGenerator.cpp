@@ -14,7 +14,7 @@
 MapGenerator::MapGenerator(){
     
 }
-std::string MapGenerator::generate(std::string name){
+std::string MapGenerator::generate(){
     std::string levelstring;
     // generate grid based on input
     const static int width = 100;
@@ -40,7 +40,7 @@ std::string MapGenerator::generate(std::string name){
     
     std::ofstream myfile;
     //myfile.open("map2.txt");
-    myfile.open(name);
+    myfile.open("map2.txt");
     
     srand((unsigned)time(0));
     
