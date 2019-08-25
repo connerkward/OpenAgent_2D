@@ -36,6 +36,9 @@ void Environment::TilesFromString(std::istringstream map){
     }
 }
 <<<<<<< HEAD:src/environments/Environment.cpp
+<<<<<<< HEAD:src/environments/Environment.cpp
+>>>>>>> parent of c3f0f61... map generator update:src/Environment.cpp
+=======
 >>>>>>> parent of c3f0f61... map generator update:src/Environment.cpp
 =======
 >>>>>>> parent of c3f0f61... map generator update:src/Environment.cpp
