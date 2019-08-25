@@ -22,6 +22,9 @@
 =======
 #include <string>
 #include <sstring> // For variable filename input to read map1.txt, map2.txt etc
+<<<<<<< HEAD:src/environments/Environment.hpp
+>>>>>>> parent of c3f0f61... map generator update:src/Environment.hpp
+=======
 >>>>>>> parent of c3f0f61... map generator update:src/Environment.hpp
 
 class Environment;
