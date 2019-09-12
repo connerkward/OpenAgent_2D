@@ -18,17 +18,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
-<<<<<<< HEAD:src/environments/Environment.hpp
-=======
-#include <string>
-#include <sstring> // For variable filename input to read map1.txt, map2.txt etc
-<<<<<<< HEAD:src/environments/Environment.hpp
-<<<<<<< HEAD:src/environments/Environment.hpp
->>>>>>> parent of c3f0f61... map generator update:src/Environment.hpp
-=======
->>>>>>> parent of c3f0f61... map generator update:src/Environment.hpp
-=======
->>>>>>> parent of c3f0f61... map generator update:src/Environment.hpp
+#include <string> // For variable filename input to read map1.txt, map2.txt etc
 
 class Environment;
 
@@ -89,7 +79,7 @@ public:
 
 	std::vector<Tile> getView(Agent& agent, int radius);
 
-	void moveAgent(Agent& agent, coord moveTo);
+	//void moveAgent(Agent& agent, coord moveTo);
     
     void spawnAgent(int x, int y);
     void spawnObstacle(int x, int y);
@@ -119,20 +109,6 @@ public:
 // besides some c++ specific syntax, which i dont fault you for, looks good
 //// ----END CONNER COMMENT------
 
-
-while (k < 50) { // Con: is 50 an arbitrary test number of steps?
-	ifstream infile;
-	infile open("map" + std::to_string(k) + ".txt");
-
-	//k is number of map runs used, SHOULD BE ADJUSTED to desired number of runs
-	if (infile.fail()) {
-		cerr << "error opening map file" << end1;
-		exit(1);
-	}
-	k++;
-	// how does this reference external step functions? Is this appropriate place or should step function happen elsewhere in code?
-}
-
 using namespace std;
 
 // Function that return count of the given  
@@ -153,12 +129,6 @@ int countEntity(string s, char c) // put this implementation inside environment.
 
 	return res;
 }
-//Driver code:
-string str = infile open("map" + std::to_string(k) + ".txt");
-char c = '@';
-cout << count(str, c) << endl;
-return 0;
-
 
 
 	

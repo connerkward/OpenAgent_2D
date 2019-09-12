@@ -20,7 +20,7 @@ class Agent : public Entity {
 private:
 	int health;
 	int x_pos, y_pos;
-	AgentEnvView envView;
+	//AgentEnvView envView;
     
 	
 

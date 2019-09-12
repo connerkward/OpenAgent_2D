@@ -13,7 +13,7 @@
 
 class Environment;
 
-const enum ENTITY_TYPE { BLANK, AGENT, FOOD, OBSTACLE };
+enum ENTITY_TYPE { BLANK, AGENT, FOOD, OBSTACLE };
 
 class Entity {
 private:

@@ -22,26 +22,7 @@ Environment::Environment(int sizeX, int sizeY, int aCount, int fCount):
     agents = populate(agentCount, *this, agents);
 	createBorder();
 }
-
-<<<<<<< HEAD:src/environments/Environment.cpp
-=======
 // INITIALIZERS
-void Environment::TilesFromString(std::istringstream map){
-    std::string line;
-    while(std::getline(map, line)){
-        int strLength = line.length();
-        for (int i=0; i>strLength; i++) {
-            std::cout << line[i];
-        }
-    }
-}
-<<<<<<< HEAD:src/environments/Environment.cpp
-<<<<<<< HEAD:src/environments/Environment.cpp
->>>>>>> parent of c3f0f61... map generator update:src/Environment.cpp
-=======
->>>>>>> parent of c3f0f61... map generator update:src/Environment.cpp
-=======
->>>>>>> parent of c3f0f61... map generator update:src/Environment.cpp
 void Environment::createTiles() {
     tiles.reserve(sizeY);
 	for (int i = 0; i < sizeY; i++) {
