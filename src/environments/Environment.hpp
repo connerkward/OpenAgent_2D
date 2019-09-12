@@ -18,12 +18,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <fstream>
-<<<<<<< HEAD:src/environments/Environment.hpp
 #include <string> // For variable filename input to read map1.txt, map2.txt etc
-=======
-#include <string>
-#include <sstring> // For variable filename input to read map1.txt, map2.txt etc
->>>>>>> parent of c3f0f61... map generator update:src/Environment.hpp
 
 class Environment;
 
@@ -116,10 +111,8 @@ public:
 
 using namespace std;
 
-<<<<<<< HEAD:src/environments/Environment.hpp
 // Function that return count of the given  
 // character in the string 
-=======
 while (k < 50) { // Con: is 50 an arbitrary test number of steps?
 	ifstream infile;
 	infile open("map" + std::to_string(k) + ".txt");

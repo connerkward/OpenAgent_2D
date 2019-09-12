@@ -24,6 +24,7 @@ Environment::Environment(int sizeX, int sizeY, int aCount, int fCount):
 }
 // INITIALIZERS
 <<<<<<< HEAD:src/environments/Environment.cpp
+<<<<<<< HEAD:src/environments/Environment.cpp
 =======
 void Environment::TilesFromString(std::istringstream map){
     std::string line;
@@ -35,6 +36,8 @@ void Environment::TilesFromString(std::istringstream map){
     }
 }
 >>>>>>> parent of c3f0f61... map generator update:src/Environment.cpp
+=======
+>>>>>>> parent of bcfc133... from:src/Environment.cpp
 void Environment::createTiles() {
     tiles.reserve(sizeY);
 	for (int i = 0; i < sizeY; i++) {
