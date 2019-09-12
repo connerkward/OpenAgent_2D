@@ -23,6 +23,18 @@ Environment::Environment(int sizeX, int sizeY, int aCount, int fCount):
 	createBorder();
 }
 // INITIALIZERS
+<<<<<<< HEAD:src/environments/Environment.cpp
+=======
+void Environment::TilesFromString(std::istringstream map){
+    std::string line;
+    while(std::getline(map, line)){
+        int strLength = line.length();
+        for (int i=0; i>strLength; i++) {
+            std::cout << line[i];
+        }
+    }
+}
+>>>>>>> parent of c3f0f61... map generator update:src/Environment.cpp
 void Environment::createTiles() {
     tiles.reserve(sizeY);
 	for (int i = 0; i < sizeY; i++) {
