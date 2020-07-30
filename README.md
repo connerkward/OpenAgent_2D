@@ -1,4 +1,4 @@
-# agent-simulator
+# OpenAgent2D
 Models simple 'agents', these agents interact with each other, the static environment, and the dynamic environment in cartesian 2D space.
 
 Shipped 
