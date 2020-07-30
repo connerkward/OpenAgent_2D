@@ -1,5 +1,5 @@
 # OpenAgent2D
-Models simple 'agents', these agents interact with each other, the static environment, and the dynamic environment in cartesian 2D space.
+Models simple 'agents', these agents interact with each other, the static environment, and the dynamic environment in cartesian 2D space. Utilizes Bresenham Raycasting, Perlin (Simplex) noise, and A* pathfinding.
 
 Shipped 
 - Ascii visualization layer 
