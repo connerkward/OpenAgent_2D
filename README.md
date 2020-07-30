@@ -1,6 +1,4 @@
 # OpenAgent2D
-<img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/connerkward/SmartSpaceBucket"> ![GitHub](https://img.shields.io/github/license/connerkward/SmartSpaceBucket) <img alt="GitHub issues" src="https://img.shields.io/github/issues-raw/connerkward/SmartSpaceBucket"> <img alt="GitHub followers" src="https://img.shields.io/github/followers/connerkward?label=Follow&style=social"><br/>
-
 Models simple 'agents', these agents interact with each other, the static environment, and the dynamic environment in cartesian 2D space. Utilizes Bresenham Raycasting, Perlin (Simplex) noise, and A* pathfinding.
 
 Shipped 
